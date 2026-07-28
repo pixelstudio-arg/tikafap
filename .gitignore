@@ -1,0 +1,8 @@
+# Archivos originales sueltos (ya están, en versión limpia, dentro de img/)
+/*.jpeg
+/*.jpg
+/*.mp4
+/*.mov
+
+# Config local de desarrollo (servidor de preview), no hace falta en el repo publicado
+.claude/
