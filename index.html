@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIKAFAP | Sillas de Caño al por Mayor - Envíos a Todo el País</title>
+<meta name="description" content="TIKAFAP: fábrica de sillas, mesas y banquetas de caño con precios por mayor. Trabajamos con revendedores, organizadores de eventos, instituciones, bares y restaurantes. Fabricación propia en Córdoba, envíos a todo el país.">
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --navy:#0d3b66;
+    --navy-dark:#0a1c3d;
+    --black:#141414;
+    --blue:#2f6fd1;
+    --blue-dark:#1f4f9e;
+    --blue-light:#7fb2f0;
+    --cream:#f7f4ef;
+    --gray:#6b6b6b;
+    --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--black);
+    background:var(--white);
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px;}
+  section{padding:90px 0;}
+  h1,h2,h3{font-weight:800;line-height:1.15;}
+  .eyebrow{
+    display:inline-block;
+    color:var(--blue);
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:13px;
+    margin-bottom:12px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:15px 30px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:15px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:var(--blue);
+    color:#fff;
+    box-shadow:0 8px 20px rgba(47,111,209,.35);
+  }
+  .btn-primary:hover{background:var(--blue-dark);}
+  .btn-outline{
+    border:2px solid #fff;
+    color:#fff;
+  }
+  .btn-outline:hover{background:#fff;color:var(--navy-dark);}
+
+  /* Header */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(8,39,68,0.0);
+    transition:background .3s ease, box-shadow .3s ease, padding .3s ease;
+    padding:18px 0;
+  }
+  header.scrolled{
+    background:var(--navy-dark);
+    box-shadow:0 4px 20px rgba(0,0,0,.2);
+    padding:10px 0;
+  }
+  header .container{display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:20px;letter-spacing:1px;}
+  .logo-badge{
+    width:42px;height:42px;border-radius:50%;
+    overflow:hidden;flex-shrink:0;
+    border:2px solid rgba(255,255,255,.5);
+  }
+  .logo-badge img{width:100%;height:100%;object-fit:cover;}
+  nav ul{display:flex;gap:32px;}
+  nav a{color:#fff;font-weight:600;font-size:14.5px;opacity:.9;}
+  nav a:hover{opacity:1;color:var(--blue-light);}
+  .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
+
+  /* 1. Hero */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    background:linear-gradient(180deg, rgba(8,39,68,.88), rgba(8,39,68,.75) 40%, rgba(8,39,68,.92)), url('img/apilable-2.jpeg') center 30%/cover no-repeat;
+    color:#fff;
+    padding-top:120px;
+  }
+  .hero-content{max-width:680px;}
+  .hero h1{font-size:52px;margin-bottom:20px;}
+  .hero h1 span{color:var(--blue-light);}
+  .hero p{font-size:19px;opacity:.92;margin-bottom:34px;max-width:560px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-stats{
+    display:flex;gap:40px;margin-top:60px;flex-wrap:wrap;
+  }
+  .hero-stats div{border-left:3px solid var(--blue-light);padding-left:16px;}
+  .hero-stats strong{display:block;font-size:28px;}
+  .hero-stats span{font-size:13.5px;opacity:.8;}
+
+  /* Marquee bar */
+  .marquee-bar{
+    background:var(--blue);
+    color:#fff;
+    padding:14px 0;
+    font-weight:700;
+    font-size:14px;
+    letter-spacing:.5px;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .marquee-track{display:inline-block;padding-left:100%;animation:scroll 26s linear infinite;}
+  .marquee-track span{margin:0 28px;}
+  @keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+
+  /* 2. Beneficios rapidos */
+  .quick-benefits{background:#fff;padding:38px 0;border-bottom:1px solid #eee;}
+  .qb-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:26px;}
+  .qb-item{display:flex;align-items:center;gap:14px;flex:1;min-width:220px;}
+  .qb-icon{
+    width:48px;height:48px;border-radius:12px;background:var(--cream);color:var(--blue);
+    display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;
+  }
+  .qb-item strong{display:block;font-size:14.5px;color:var(--navy-dark);}
+  .qb-item span{font-size:12.5px;color:var(--gray);}
+
+  /* Perfiles de cliente */
+  .profiles{background:var(--navy-dark);color:#fff;}
+  .profiles .section-head h2{color:#fff;}
+  .profiles .section-head p{color:#c9d7e5;}
+  .profile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .profile-card{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+    border-radius:16px;padding:28px 22px;text-align:center;
+  }
+  .profile-icon{
+    width:52px;height:52px;border-radius:50%;background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 16px;
+  }
+  .profile-card h3{font-size:16px;margin-bottom:8px;}
+  .profile-card p{font-size:13px;color:#c9d7e5;}
+
+  /* Productos */
+  .products{background:#fff;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .section-head h2{font-size:38px;color:var(--navy-dark);margin-bottom:14px;}
+  .section-head p{color:var(--gray);font-size:16.5px;}
+  .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .product-card{
+    border-radius:18px;
+    overflow:hidden;
+    background:var(--cream);
+    box-shadow:0 10px 26px rgba(0,0,0,.08);
+    transition:transform .25s ease, box-shadow .25s ease;
+    display:flex;flex-direction:column;
+  }
+  .product-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(0,0,0,.16);}
+  .product-img{aspect-ratio:3/4;overflow:hidden;position:relative;}
+  .product-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .product-card:hover .product-img img{transform:scale(1.06);}
+  .product-body{padding:20px 20px 24px;flex:1;display:flex;flex-direction:column;}
+  .product-body h3{font-size:19px;margin-bottom:8px;color:var(--navy-dark);}
+  .product-body p{font-size:13.8px;color:var(--gray);margin-bottom:18px;flex:1;}
+  .product-price{font-size:15px;font-weight:800;color:var(--navy-dark);margin-bottom:4px;}
+  .product-price span{font-size:12px;font-weight:600;color:var(--gray);}
+  .product-tag{
+    display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;
+    padding:4px 10px;border-radius:20px;margin-bottom:12px;letter-spacing:.5px;text-transform:uppercase;width:fit-content;
+  }
+  .product-body a{
+    font-size:13.5px;font-weight:700;color:var(--blue);display:inline-flex;align-items:center;gap:6px;
+  }
+  .product-body a:hover{color:var(--blue-dark);}
+
+  /* Combos */
+  .combos{background:var(--cream);}
+  .combo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .combo-card{
+    border-radius:18px;overflow:hidden;background:#fff;
+    box-shadow:0 10px 26px rgba(0,0,0,.08);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .combo-card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(0,0,0,.16);}
+  .combo-img{aspect-ratio:4/3;overflow:hidden;}
+  .combo-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .combo-card:hover .combo-img img{transform:scale(1.06);}
+  .combo-body{padding:18px 20px 22px;}
+  .combo-body h3{font-size:17px;margin-bottom:6px;color:var(--navy-dark);}
+  .combo-body p{font-size:13.5px;color:var(--gray);}
+  .combo-specs{
+    display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+    margin:-20px 0 40px;
+  }
+  .combo-spec{
+    display:flex;align-items:center;gap:10px;
+    background:#fff;border:1px solid #e8e2d6;
+    padding:12px 20px;border-radius:50px;
+    font-size:14px;font-weight:600;color:var(--navy-dark);
+    box-shadow:0 6px 16px rgba(0,0,0,.05);
+  }
+  .combo-cta-note{
+    text-align:center;margin-top:34px;color:var(--gray);font-size:15px;
+  }
+  .combo-cta-note a{color:var(--blue);font-weight:700;}
+  .combo-cta-note a:hover{color:var(--blue-dark);}
+
+  /* Precios por mayor */
+  .pricing{background:#fff;}
+  .price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .price-card{border:1px solid #e8e2d6;border-radius:18px;overflow:hidden;background:var(--cream);}
+  .price-card-head{background:var(--navy-dark);color:#fff;padding:16px 18px;text-align:center;}
+  .price-card-head h3{font-size:15.5px;}
+  .price-tiers{padding:4px 18px 16px;}
+  .price-tier{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #e8e2d6;gap:10px;}
+  .price-tier:last-child{border-bottom:none;}
+  .price-tier .qty{font-size:12.5px;color:var(--gray);display:flex;align-items:center;flex-wrap:wrap;gap:6px;}
+  .price-tier .amount{font-size:16px;font-weight:800;color:var(--navy-dark);white-space:nowrap;}
+  .price-tier.best .amount{color:var(--blue);}
+  .price-badge{
+    display:inline-block;background:var(--blue);color:#fff;font-size:9.5px;font-weight:700;
+    padding:2px 8px;border-radius:20px;letter-spacing:.3px;text-transform:uppercase;
+  }
+  .pricing-note{text-align:center;color:var(--gray);font-size:14px;max-width:700px;margin:36px auto 0;}
+  .pricing-cta{text-align:center;margin-top:30px;}
+
+  /* 4. Problema - Solucion */
+  .problem-solution{background:#fff;}
+  .ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:10px;}
+  .ps-card{border-radius:18px;padding:32px 30px;}
+  .ps-card.problem{background:#fdf2f0;border:1px solid #f3d9d3;}
+  .ps-card.solution{background:#eef4fd;border:1px solid #cfe0f7;}
+  .ps-card h3{font-size:19px;margin-bottom:18px;color:var(--navy-dark);}
+  .ps-card ul{display:flex;flex-direction:column;gap:13px;}
+  .ps-card li{display:flex;gap:10px;font-size:14.5px;color:var(--black);align-items:flex-start;}
+  .ps-card.problem li span{color:#c0392b;flex-shrink:0;}
+  .ps-card.solution li span{color:var(--blue);flex-shrink:0;}
+  .ps-cta{text-align:center;margin-top:36px;}
+
+  /* 5. Prueba social */
+  .social-proof{background:var(--cream);}
+  .sp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px;}
+  .sp-card{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06);}
+  .sp-card strong{display:block;font-size:32px;color:var(--navy-dark);}
+  .sp-card span{font-size:13.5px;color:var(--gray);}
+  .sp-note{text-align:center;color:var(--gray);font-size:15.5px;max-width:640px;margin:0 auto;}
+  .sp-note a{color:var(--blue);font-weight:700;}
+  .sp-note a:hover{color:var(--blue-dark);}
+  .testimonial-videos{
+    margin:44px 0 40px;
+  }
+  .tv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .tv-card{
+    position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16;
+    background:var(--navy-dark);box-shadow:0 10px 26px rgba(0,0,0,.12);
+  }
+  .tv-card video{width:100%;height:100%;object-fit:cover;display:block;}
+  .tv-card .tv-placeholder{
+    width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;color:#c9d7e5;text-align:center;padding:20px;
+  }
+  .tv-card .tv-placeholder .tv-play{
+    width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.12);
+    display:flex;align-items:center;justify-content:center;font-size:22px;
+  }
+  .tv-card .tv-placeholder span{font-size:13px;}
+  .tv-card figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+    background:linear-gradient(180deg, rgba(10,28,61,0), rgba(10,28,61,.9));
+    color:#fff;font-size:13px;font-weight:600;
+  }
+
+  /* 6. Categorias */
+  .categories{background:#fff;}
+  .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .cat-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 10px 26px rgba(0,0,0,.1);display:block;}
+  .cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .cat-card:hover img{transform:scale(1.06);}
+  .cat-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(10,28,61,0) 40%, rgba(10,28,61,.92));
+    display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:#fff;
+  }
+  .cat-overlay h3{font-size:19px;margin-bottom:6px;}
+  .cat-overlay p{font-size:13px;opacity:.9;margin-bottom:10px;}
+  .cat-overlay .cat-link{font-size:13px;font-weight:700;color:var(--blue-light);}
+
+  /* 7. Diferenciales */
+  .why{background:var(--cream);}
+  .why .section-head{margin-bottom:20px;}
+  .why-intro{max-width:760px;margin:0 auto 44px;text-align:center;color:var(--gray);font-size:16px;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .why-card{
+    background:#fff;padding:34px 26px;border-radius:16px;box-shadow:0 8px 22px rgba(0,0,0,.06);
+    text-align:center;
+  }
+  .why-card .why-icon{
+    width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 18px;
+  }
+  .why-card h3{font-size:17.5px;margin-bottom:10px;color:var(--navy-dark);}
+  .why-card p{font-size:14px;color:var(--gray);}
+
+  /* 8. Contenido real / Fabrica gallery */
+  .factory{background:var(--navy-dark);color:#fff;position:relative;}
+  .factory .section-head h2{color:#fff;}
+  .factory .section-head p{color:#c9d7e5;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .gallery-grid img,.gallery-grid video{border-radius:14px;aspect-ratio:1/1;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.35);width:100%;}
+  .factory-note{
+    margin-top:44px;text-align:center;color:#c9d7e5;font-size:15px;max-width:700px;margin-left:auto;margin-right:auto;
+  }
+
+  /* 9. FAQ */
+  .faq{background:#fff;}
+  .faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--cream);border-radius:14px;padding:6px 24px;}
+  .faq-item summary{
+    padding:18px 0;font-weight:700;font-size:15.5px;color:var(--navy-dark);cursor:pointer;
+    list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';font-size:22px;color:var(--blue);flex-shrink:0;}
+  .faq-item[open] summary::after{content:'\2212';}
+  .faq-item p{padding-bottom:20px;color:var(--gray);font-size:14.5px;}
+
+  /* 10. CTA banda */
+  .cta-band{
+    background:linear-gradient(135deg, var(--blue), var(--blue-dark));
+    color:#fff;text-align:center;
+  }
+  .cta-band h2{font-size:34px;margin-bottom:16px;}
+  .cta-band p{font-size:16.5px;opacity:.95;margin-bottom:30px;}
+  .cta-band .btn-primary{background:#fff;color:var(--blue-dark);box-shadow:0 8px 20px rgba(0,0,0,.15);}
+  .cta-band .btn-primary:hover{background:var(--cream);}
+
+  /* Contacto */
+  .contact{background:#fff;}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .contact h2{font-size:36px;color:var(--navy-dark);margin-bottom:16px;}
+  .contact p{color:var(--gray);font-size:16px;margin-bottom:28px;}
+  .contact-cards{display:flex;flex-direction:column;gap:16px;}
+  .contact-card{
+    display:flex;align-items:center;gap:16px;padding:20px 22px;border-radius:14px;
+    background:var(--cream);
+  }
+  .contact-card .ic{
+    width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+  }
+  .contact-card strong{display:block;font-size:15px;color:var(--black);}
+  .contact-card span{font-size:13.5px;color:var(--gray);}
+  .map-box{
+    border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.1);
+    background:var(--cream);color:var(--black);display:flex;align-items:center;justify-content:center;
+    min-height:340px;text-align:center;padding:40px;border:1px solid #e8e2d6;
+  }
+  .map-box .logo-marca-img{
+    width:200px;max-width:70%;margin:0 auto 22px;
+  }
+
+  /* Footer */
+  footer{background:var(--black);color:#c9c9c9;padding:50px 0 24px;text-align:center;font-size:13.5px;}
+  footer .footer-logo{color:#fff;font-weight:800;font-size:20px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px;}
+  footer .socials{display:flex;justify-content:center;gap:16px;margin:18px 0;}
+  footer .socials a{
+    width:38px;height:38px;border-radius:50%;background:#232323;display:flex;align-items:center;justify-content:center;color:#fff;
+  }
+  footer .socials a:hover{background:var(--blue);}
+
+  /* WhatsApp float */
+  .wa-float{
+    position:fixed;bottom:24px;right:24px;z-index:200;
+    background:#25D366;color:#fff;width:60px;height:60px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:30px;
+    box-shadow:0 8px 22px rgba(0,0,0,.3);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  @media(max-width:900px){
+    .contact-grid,.ps-grid{grid-template-columns:1fr;}
+    .product-grid,.price-grid,.profile-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .sp-grid,.cat-grid,.combo-grid,.tv-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:38px;}
+    section{padding:64px 0;}
+    nav{position:fixed;top:0;right:-100%;height:100vh;width:78%;max-width:320px;background:var(--navy-dark);
+      padding:100px 30px;transition:right .3s ease;box-shadow:-8px 0 30px rgba(0,0,0,.3);}
+    nav.open{right:0;}
+    nav ul{flex-direction:column;gap:24px;}
+    .nav-toggle{display:block;}
+    .qb-item{min-width:100%;}
+  }
+  @media(max-width:560px){
+    .product-grid{grid-template-columns:1fr 1fr;}
+    .price-grid,.profile-grid,.why-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .hero-stats{gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container">
+    <a href="#inicio" class="logo">
+      <span class="logo-badge"><img src="img/logo-circular.jpeg" alt="Logo TIKAFAP"></span>
+      TIKAFAP
+    </a>
+    <nav id="nav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#precios">Precios</a></li>
+        <li><a href="#perfiles">Para quién</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero" id="inicio">
+  <div class="container hero-content">
+    <span class="eyebrow" style="color:#7fb2f0;">Fábrica de sillas de caño · Envíos a todo el país</span>
+    <h1>Sillas de caño al por mayor <span>directo de fábrica</span></h1>
+    <p>Fabricamos sillas, mesas y banquetas de caño para revendedores, organizadores de eventos, salones de eventos, instituciones (clubes, iglesias, municipios) bares y restaurantes. Precios por escala de cantidad y despacho a todo el país.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://wa.me/5493512402427?text=Hola%20TIKAFAP!%20Quiero%20pedir%20un%20presupuesto%20mayorista" target="_blank" rel="noopener">📲 Pedir presupuesto mayorista</a>
+      <a class="btn btn-outline" href="#precios">Ver precios por mayor</a>
+    </div>
+    <div class="hero-stats">
+      <div><strong>100%</strong><span>Fabricación propia</span></div>
+      <div><strong>+50u</strong><span>Mejor precio por escala</span></div>
+      <div><strong>Nacional</strong><span>Envíos a todo el país</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>🪑 PRECIOS POR MAYOR</span><span>·</span><span>REVENDEDORES</span><span>·</span><span>ORGANIZADORES DE EVENTOS</span><span>·</span>
+    <span>INSTITUCIONES</span><span>·</span><span>BARES Y RESTAURANTES</span><span>·</span>
+    <span>ENVÍOS A TODO EL PAÍS</span><span>·</span>
+    <span>🪑 PRECIOS POR MAYOR</span><span>·</span><span>REVENDEDORES</span><span>·</span><span>ORGANIZADORES DE EVENTOS</span><span>·</span>
+    <span>INSTITUCIONES</span><span>·</span><span>BARES Y RESTAURANTES</span><span>·</span>
+    <span>ENVÍOS A TODO EL PAÍS</span><span>·</span>
+  </div>
+</div>
+
+<!-- 2. BENEFICIOS RAPIDOS -->
+<section class="quick-benefits">
+  <div class="container qb-grid">
+    <div class="qb-item">
+      <div class="qb-icon">🏭</div>
+      <div><strong>Fabricación propia</strong><span>Sin intermediarios</span></div>
+    </div>
+    <div class="qb-item">
+      <div class="qb-icon">📊</div>
+      <div><strong>Precios por escala</strong><span>Mejor precio desde 20 y 50 unidades</span></div>
+    </div>
+    <div class="qb-item">
+      <div class="qb-icon">🚚</div>
+      <div><strong>Envíos a todo el país</strong><span>Consultá tu zona</span></div>
+    </div>
+    <div class="qb-item">
+      <div class="qb-icon">🏢</div>
+      <div><strong>Atención a mayoristas</strong><span>Revendedores e instituciones</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ¿PARA QUIÉN ES TIKAFAP? -->
+<section class="profiles" id="perfiles">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:#7fb2f0;">¿Para quién es TIKAFAP?</span>
+      <h2>Trabajamos con quienes compran en cantidad</h2>
+      <p>Fabricamos a escala para estos perfiles, con precios especiales por volumen de compra.</p>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <div class="profile-icon">🔁</div>
+        <h3>Revendedores</h3>
+        <p>Precios de fábrica para reventa, con escala por cantidad.</p>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🎉</div>
+        <h3>Organizadores de eventos y salones</h3>
+        <p>Grandes cantidades para salones y eventos, con stock disponible.</p>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🏛️</div>
+        <h3>Instituciones</h3>
+        <p>Clubes, iglesias, municipios y todo tipo de institución.</p>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🍽️</div>
+        <h3>Bares y restaurantes</h3>
+        <p>Mobiliario resistente pensado para el uso comercial diario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. PRODUCTOS DESTACADOS -->
+<section class="products" id="productos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Nuestros productos</span>
+      <h2>Modelos de sillas de caño</h2>
+      <p>Estructura de caño reforzado y tapizado resistente. Precios especiales por cantidad para revendedores, instituciones y organizadores de eventos — <a href="#precios" style="color:var(--blue);font-weight:700;">ver escala de precios ↓</a></p>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/api-tap-1.jpeg" alt="Silla Api Tap TIKAFAP"></div>
+        <div class="product-body">
+          <span class="product-tag">Apilable</span>
+          <h3>Silla Api Tap</h3>
+          <p>Diseño clásico de respaldo tapizado, ideal para bares y espacios gastronómicos con estilo cálido.</p>
+          <p class="product-price">$28.500 <span>unidad · desde $26.200 por 50+</span></p>
+          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Api%20Tap" target="_blank" rel="noopener">Consultar por esta silla →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP"></div>
+        <div class="product-body">
+          <span class="product-tag">Apilable</span>
+          <h3>Silla Apilable</h3>
+          <p>Respaldo de caño con líneas simples y asiento tapizado. Fácil de apilar y guardar entre usos.</p>
+          <p class="product-price">$26.000 <span>unidad · desde $24.000 por 50+</span></p>
+          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Apilable" target="_blank" rel="noopener">Consultar por esta silla →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/class-premium-1.jpeg" alt="Silla Class Premium TIKAFAP"></div>
+        <div class="product-body">
+          <span class="product-tag">Premium</span>
+          <h3>Silla Class Premium</h3>
+          <p>Respaldo alto totalmente tapizado, un modelo más elegante para salones y eventos.</p>
+          <p class="product-price">$40.500 <span>unidad · desde $38.500 por 50+</span></p>
+          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Class%20Premium" target="_blank" rel="noopener">Consultar por esta silla →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP"></div>
+        <div class="product-body">
+          <span class="product-tag">Apilable</span>
+          <h3>Silla Salomé</h3>
+          <p>Estructura robusta de caño doble y respaldo tapizado, pensada para uso comercial intensivo.</p>
+          <p class="product-price">$31.000 <span>unidad · desde $28.300 por 50+</span></p>
+          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Salom%C3%A9" target="_blank" rel="noopener">Consultar por esta silla →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="combos" id="combos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Juegos completos</span>
+      <h2>Combos de silla + mesa</h2>
+      <p>Armamos juegos de comedor combinando nuestras sillas con mesas a medida, ideales para el hogar o para equipar tu local por completo. Cantidad de sillas y medida de mesa a elección.</p>
+    </div>
+    <div class="combo-specs">
+      <div class="combo-spec"><span>🪑</span>Combos de 4, 6 sillas o la cantidad que necesites</div>
+      <div class="combo-spec"><span>📏</span>Mesas de 0.80 x 1.40 m o 0.80 x 1.80 m</div>
+    </div>
+    <div class="combo-grid">
+      <div class="combo-card">
+        <div class="combo-img"><img src="img/combo-1.jpeg" alt="Combo silla y mesa TIKAFAP con tapizado símil mármol"></div>
+        <div class="combo-body">
+          <h3>Combo silla + mesa</h3>
+          <p>Sillas de caño con tapizado símil mármol y mesa a juego, ideal para comedores diarios.</p>
+        </div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-img"><img src="img/combo-2.jpeg" alt="Combo silla y mesa TIKAFAP tapizado negro"></div>
+        <div class="combo-body">
+          <h3>Combo silla + mesa</h3>
+          <p>Set de sillas tapizadas en negro combinadas con mesa de madera, para un estilo cálido y prolijo.</p>
+        </div>
+      </div>
+      <div class="combo-card">
+        <div class="combo-img"><img src="img/combo-3.jpeg" alt="Combo silla y mesa TIKAFAP en negro"></div>
+        <div class="combo-body">
+          <h3>Combo silla + mesa</h3>
+          <p>Combo totalmente en negro, con mesa y sillas a tono para un ambiente moderno.</p>
+        </div>
+      </div>
+    </div>
+    <p class="combo-cta-note">¿Necesitás otra cantidad de sillas o una medida distinta de mesa? <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20armar%20un%20combo%20de%20sillas%20%2B%20mesa" target="_blank" rel="noopener">Consultanos por WhatsApp →</a></p>
+  </div>
+</section>
+
+<!-- PRECIOS POR MAYOR -->
+<section class="pricing" id="precios">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Precios por mayor</span>
+      <h2>Mejor precio cuanto más comprás</h2>
+      <p>Escala de precios por cantidad, pensada para revendedores, instituciones y organizadores de eventos.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-card-head"><h3>Silla Apilable</h3></div>
+        <div class="price-tiers">
+          <div class="price-tier"><span class="qty">1 unidad</span><span class="amount">$26.000</span></div>
+          <div class="price-tier"><span class="qty">20 o más</span><span class="amount">$25.300</span></div>
+          <div class="price-tier best"><span class="qty">50 o más<span class="price-badge">Mejor precio</span></span><span class="amount">$24.000</span></div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-head"><h3>Silla Api Tap</h3></div>
+        <div class="price-tiers">
+          <div class="price-tier"><span class="qty">1 unidad</span><span class="amount">$28.500</span></div>
+          <div class="price-tier"><span class="qty">20 o más</span><span class="amount">$27.700</span></div>
+          <div class="price-tier best"><span class="qty">50 o más<span class="price-badge">Mejor precio</span></span><span class="amount">$26.200</span></div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-head"><h3>Silla Salomé</h3></div>
+        <div class="price-tiers">
+          <div class="price-tier"><span class="qty">1 unidad</span><span class="amount">$31.000</span></div>
+          <div class="price-tier"><span class="qty">20 o más</span><span class="amount">$29.800</span></div>
+          <div class="price-tier best"><span class="qty">50 o más<span class="price-badge">Mejor precio</span></span><span class="amount">$28.300</span></div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-card-head"><h3>Silla Class Premium</h3></div>
+        <div class="price-tiers">
+          <div class="price-tier"><span class="qty">1 unidad</span><span class="amount">$40.500</span></div>
+          <div class="price-tier"><span class="qty">20 o más</span><span class="amount">$39.800</span></div>
+          <div class="price-tier best"><span class="qty">50 o más<span class="price-badge">Mejor precio</span></span><span class="amount">$38.500</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="pricing-note">Precios en pesos argentinos, sujetos a variación sin previo aviso. Combos silla + mesa, mesas y banquetas a consultar según cantidad y medida.</p>
+    <div class="pricing-cta">
+      <a class="btn btn-primary" href="https://wa.me/5493512402427?text=Hola%20TIKAFAP!%20Quiero%20consultar%20precios%20por%20mayor" target="_blank" rel="noopener">📲 Consultar precio para mi cantidad</a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. PROBLEMA - SOLUCION -->
+<section class="problem-solution" id="problema-solucion">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">El problema real</span>
+      <h2>¿Necesitás comprar muchas sillas y no encontrás buen precio por mayor?</h2>
+      <p>Comprar por unidad en un local sale caro y no siempre hay stock para pedidos grandes. Fabricando directo, resolvemos eso.</p>
+    </div>
+    <div class="ps-grid">
+      <div class="ps-card problem">
+        <h3>❌ Lo que pasa al comprar por menor</h3>
+        <ul>
+          <li><span>✕</span>El precio por unidad no baja aunque compres en cantidad.</li>
+          <li><span>✕</span>No siempre hay stock disponible para pedidos grandes.</li>
+          <li><span>✕</span>Sillas que no aguantan el uso intensivo de un local, evento o institución.</li>
+          <li><span>✕</span>Comprás por catálogo y no sabés bien qué te va a llegar.</li>
+        </ul>
+      </div>
+      <div class="ps-card solution">
+        <h3>✅ Lo que resolvemos en TIKAFAP</h3>
+        <ul>
+          <li><span>✓</span>Precios por escala: cuanto más comprás, menos pagás por silla.</li>
+          <li><span>✓</span>Fabricación propia con capacidad para pedidos grandes.</li>
+          <li><span>✓</span>Estructura de caño reforzado pensada para uso comercial intensivo.</li>
+          <li><span>✓</span>Atención directa de fábrica, para revendedores e instituciones.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="ps-cta">
+      <a class="btn btn-primary" href="https://wa.me/5493512402427?text=Hola%20TIKAFAP!%20Quiero%20contarles%20qu%C3%A9%20necesito%20para%20mi%20pedido%20por%20mayor" target="_blank" rel="noopener">📲 Contanos qué necesitás</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PRUEBA SOCIAL -->
+<section class="social-proof" id="confian">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Prueba social</span>
+      <h2>Entregas reales a nuestros clientes</h2>
+      <p>Nada de fotos de stock: así llegan nuestros pedidos a bares, instituciones y hogares en distintos puntos del país.</p>
+    </div>
+    <div class="sp-grid">
+      <div class="sp-card"><strong>1700+</strong><span>Seguidores en @tikafap.fabrica</span></div>
+      <div class="sp-card"><strong>700+</strong><span>Seguidores en @tikafap.calidad</span></div>
+      <div class="sp-card"><strong>100%</strong><span>Fabricación propia en Córdoba</span></div>
+    </div>
+
+    <div class="testimonial-videos">
+      <div class="tv-grid">
+        <figure class="tv-card">
+          <video src="img/entrega-luchy.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Entrega en Luchy</figcaption>
+        </figure>
+        <figure class="tv-card">
+          <video src="img/entrega-san-luis.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Envío a San Luis</figcaption>
+        </figure>
+        <figure class="tv-card">
+          <video src="img/entrega-institucion.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Entrega a institución</figcaption>
+        </figure>
+        <figure class="tv-card">
+          <video src="img/entrega-combo.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Entrega de combo silla + mesa</figcaption>
+        </figure>
+        <figure class="tv-card">
+          <video src="img/entrega-sillas-1.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Entrega de sillas</figcaption>
+        </figure>
+        <figure class="tv-card">
+          <video src="img/entrega-sillas-3.mp4" controls preload="metadata" playsinline></video>
+          <figcaption>Entrega de sillas</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <p class="sp-note">Mirá más entregas y los testimonios reales de nuestros clientes en el highlight "Testimonios TIKA" de <a href="https://www.instagram.com/tikafap.fabrica" target="_blank" rel="noopener">@tikafap.fabrica</a> en Instagram →</p>
+  </div>
+</section>
+
+<!-- 6. CATEGORIAS PRINCIPALES -->
+<section class="categories" id="categorias">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Categorías</span>
+      <h2>Encontrá lo que tu local necesita</h2>
+      <p>Recorré nuestras categorías principales y consultanos por lo que estés buscando.</p>
+    </div>
+    <div class="cat-grid">
+      <a class="cat-card" href="#productos">
+        <img src="img/salome-1.jpeg" alt="Sillas de caño TIKAFAP">
+        <div class="cat-overlay">
+          <h3>Sillas de caño</h3>
+          <p>4+ modelos apilables y premium, con distintos tapizados.</p>
+          <span class="cat-link">Ver sillas →</span>
+        </div>
+      </a>
+      <a class="cat-card" href="#combos">
+        <img src="img/combo-2.jpeg" alt="Combos silla y mesa TIKAFAP">
+        <div class="cat-overlay">
+          <h3>Combos silla + mesa</h3>
+          <p>Juegos completos para el hogar o para equipar tu local.</p>
+          <span class="cat-link">Ver combos →</span>
+        </div>
+      </a>
+      <a class="cat-card" href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20mesas%20y%20banquetas" target="_blank" rel="noopener">
+        <img src="img/banquetas.jpeg" alt="Banquetas de caño TIKAFAP">
+        <div class="cat-overlay">
+          <h3>Mesas y banquetas</h3>
+          <p>Fabricadas a juego con nuestras sillas, a medida.</p>
+          <span class="cat-link">Consultar →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. DIFERENCIALES -->
+<section class="why" id="diferenciales">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">¿Por qué comprar en TIKAFAP?</span>
+      <h2>Fabricación propia, calidad de fábrica</h2>
+    </div>
+    <p class="why-intro">TIKAFAP es una fábrica de sillas, mesas y banquetas de caño con base en el interior de Córdoba, con la mira puesta en posicionarnos a nivel nacional. Controlamos cada etapa del proceso —estructura, tapizados y terminaciones— para ofrecer mobiliario duradero a revendedores, instituciones, organizadores de eventos, bares y restaurantes de todo el país.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <h3>Precios por escala</h3>
+        <p>Mejor precio por silla a partir de 20 y 50 unidades, ideal para compras mayoristas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛠️</div>
+        <h3>Resistencia comercial</h3>
+        <p>Estructuras de caño preparadas para el uso diario e intensivo de bares, restaurantes e instituciones.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🧵</div>
+        <h3>Tapizados a elección</h3>
+        <p>Distintos colores de tapizado para que el mobiliario acompañe cada proyecto.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3>Atención directa</h3>
+        <p>Hablás directamente con la fábrica: sin intermediarios, con seguimiento personalizado de tu pedido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CONTENIDO REAL -->
+<section class="factory" id="fabrica">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:#7fb2f0;">Contenido real, no de stock</span>
+      <h2>Así trabajamos en la fábrica</h2>
+      <p>Producción propia en Córdoba, con capacidad para pedidos grandes: mirá en video nuestro proceso real de producción, stock y despacho.</p>
+    </div>
+    <div class="gallery-grid">
+      <video src="img/stock-produccion.mp4" muted loop playsinline controls preload="metadata" aria-label="Producción de sillas TIKAFAP"></video>
+      <video src="img/stock-camion.mp4" muted loop playsinline controls preload="metadata" aria-label="Carga de camión TIKAFAP"></video>
+      <video src="img/stock-sillas.mp4" muted loop playsinline controls preload="metadata" aria-label="Stock de sillas TIKAFAP"></video>
+      <img src="img/salome-2.jpeg" alt="Stock de sillas Salomé apiladas">
+    </div>
+    <p class="factory-note">Además de sillas, fabricamos mesas y banquetas a juego, y realizamos tapizados en distintos colores según la identidad de tu local.</p>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>¿Tienen precios especiales por cantidad?</summary>
+        <p>Sí, manejamos escala de precios: mejor precio por silla a partir de 20 unidades, y el mejor precio a partir de 50 unidades. Consultanos por cantidades mayores.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Trabajan con revendedores e instituciones?</summary>
+        <p>Sí, gran parte de nuestros pedidos son para revendedores, organizadores de eventos, salones de eventos e instituciones (clubes, iglesias, municipios, entre otras).</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Hacen envíos a todo el país?</summary>
+        <p>Sí, despachamos pedidos a distintos puntos de Argentina. Consultanos el costo y el tiempo de envío según tu ubicación.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo elegir el color del tapizado?</summary>
+        <p>Sí, trabajamos con distintos colores de tapizado sujeto a disponibilidad de stock. Contanos qué buscás y te asesoramos.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Tienen stock o fabrican por pedido?</summary>
+        <p>Ambas opciones: contamos con modelos de stock y también fabricamos por pedido para cantidades grandes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Venden por mayor y por menor?</summary>
+        <p>Sí, atendemos tanto la compra de una silla suelta como pedidos grandes para revendedores e instituciones.</p>
+      </details>
+      <details class="faq-item">
+        <summary>¿Cómo hago mi pedido?</summary>
+        <p>Por WhatsApp: nos contás qué modelo y cantidad necesitás, y te asesoramos con el presupuesto y los tiempos de entrega.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA FINAL -->
+<section class="cta-band">
+  <div class="container">
+    <h2>¿Sos revendedor, organizás eventos o representás una institución?</h2>
+    <p>Contanos cuántas sillas necesitás y te pasamos el precio por escala que te corresponde.</p>
+    <a class="btn btn-primary" href="https://wa.me/5493512402427?text=Hola%20TIKAFAP!%20Quiero%20hacer%20un%20pedido%20por%20mayor" target="_blank" rel="noopener">📲 Hablar por WhatsApp</a>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="container contact-grid">
+    <div>
+      <span class="eyebrow">Contacto</span>
+      <h2>Pedí tu presupuesto mayorista sin cargo</h2>
+      <p>Escribinos por WhatsApp contándonos qué modelo te interesa y la cantidad que necesitás. Te respondemos con catálogo, escala de precios y asesoramiento.</p>
+      <div class="contact-cards">
+        <a class="contact-card" href="https://wa.me/5493512402427" target="_blank" rel="noopener">
+          <div class="ic">📲</div>
+          <div><strong>WhatsApp Fábrica</strong><span>+54 9 351 240-2427</span></div>
+        </a>
+        <a class="contact-card" href="https://wa.me/c/5493518668174" target="_blank" rel="noopener">
+          <div class="ic">📖</div>
+          <div><strong>Catálogo por WhatsApp</strong><span>+54 9 351 866-8174</span></div>
+        </a>
+        <div class="contact-card">
+          <div class="ic">📍</div>
+          <div><strong>Ubicación</strong><span>Interior de Córdoba · Envíos a todo el país</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="map-box">
+      <div>
+        <img class="logo-marca-img" src="img/logo-marca.jpeg" alt="TIKAFAP Calidad & Diseño">
+        <p style="color:var(--gray);">Fábrica de sillas, mesas y banquetas de caño<br>Envíos a todo el país</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo"><span class="logo-badge"><img src="img/logo-circular.jpeg" alt="Logo TIKAFAP"></span>TIKAFAP</div>
+    <p>Fábrica de sillas, mesas y banquetas de caño · Envíos a todo el país</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/tikafap.fabrica" target="_blank" rel="noopener" aria-label="Instagram fábrica">IG</a>
+      <a href="https://www.instagram.com/tikafap.calidad" target="_blank" rel="noopener" aria-label="Instagram calidad y diseño">IG</a>
+      <a href="https://wa.me/5493512402427" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+    </div>
+    <p style="margin-top:10px;opacity:.6;">© <span id="year"></span> TIKAFAP. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5493512402427?text=Hola%20TIKAFAP!" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const nav = document.getElementById('nav');
+  const navToggle = document.getElementById('navToggle');
+  navToggle.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+
+</body>
+</html>
