@@ -276,6 +276,14 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .sp-card{background:#fff;border-radius:16px;padding:32px 24px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06);}
   .sp-card strong{display:block;font-size:32px;color:var(--navy-dark);}
   .sp-card span{font-size:13.5px;color:var(--gray);}
+  .sp-card-link{display:flex;flex-direction:column;align-items:center;transition:transform .2s ease, box-shadow .2s ease;}
+  .sp-card-link:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.1);}
+  .sp-card-link .sp-ig-icon{
+    width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px;
+  }
+  .sp-card-link strong{font-size:16px;margin-bottom:6px;}
+  .sp-card-link span{color:var(--blue);font-weight:700;}
   .sp-note{text-align:center;color:var(--gray);font-size:15.5px;max-width:640px;margin:0 auto;}
   .sp-note a{color:var(--blue);font-weight:700;}
   .sp-note a:hover{color:var(--blue-dark);}
@@ -480,12 +488,12 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
 
 <div class="marquee-bar">
   <div class="marquee-track">
-    <span>🪑 PRECIOS POR MAYOR</span><span>·</span><span>REVENDEDORES</span><span>·</span><span>ORGANIZADORES DE EVENTOS</span><span>·</span>
-    <span>INSTITUCIONES</span><span>·</span><span>BARES Y RESTAURANTES</span><span>·</span>
-    <span>ENVÍOS A TODO EL PAÍS</span><span>·</span>
-    <span>🪑 PRECIOS POR MAYOR</span><span>·</span><span>REVENDEDORES</span><span>·</span><span>ORGANIZADORES DE EVENTOS</span><span>·</span>
-    <span>INSTITUCIONES</span><span>·</span><span>BARES Y RESTAURANTES</span><span>·</span>
-    <span>ENVÍOS A TODO EL PAÍS</span><span>·</span>
+    <span>🪑 ENVÍOS A TODO EL PAÍS</span><span>·</span><span>2 AÑOS DE GARANTÍA</span><span>·</span><span>ENVÍO CONTRA ENTREGA</span><span>·</span>
+    <span>PRECIOS POR MAYOR</span><span>·</span><span>FACTURACIÓN</span><span>·</span>
+    <span>+15 AÑOS EN EL MERCADO</span><span>·</span>
+    <span>🪑 ENVÍOS A TODO EL PAÍS</span><span>·</span><span>2 AÑOS DE GARANTÍA</span><span>·</span><span>ENVÍO CONTRA ENTREGA</span><span>·</span>
+    <span>PRECIOS POR MAYOR</span><span>·</span><span>FACTURACIÓN</span><span>·</span>
+    <span>+15 AÑOS EN EL MERCADO</span><span>·</span>
   </div>
 </div>
 
@@ -682,7 +690,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
-    <p class="pricing-note">Precios en pesos argentinos, sujetos a variación sin previo aviso. Combos silla + mesa, mesas y banquetas a consultar según cantidad y medida.</p>
+    <p class="pricing-note">Precios en pesos argentinos, sujetos a variación sin previo aviso. Combos silla + mesa, mesas y banquetas a consultar según cantidad y medida.<br>Somos proveedores <strong>mayoristas a todo el país</strong>. La venta <strong>minorista (por unidad) es solo en Córdoba</strong>.</p>
     <div class="pricing-cta">
       <a class="btn btn-primary" href="https://wa.me/5493512402427?text=Hola%20TIKAFAP!%20Quiero%20consultar%20precios%20por%20mayor" target="_blank" rel="noopener">📲 Consultar precio para mi cantidad</a>
     </div>
@@ -732,9 +740,17 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       <p>Nada de fotos de stock: así llegan nuestros pedidos a bares, instituciones y hogares en distintos puntos del país.</p>
     </div>
     <div class="sp-grid">
-      <div class="sp-card"><strong>1700+</strong><span>Seguidores en @tikafap.fabrica</span></div>
-      <div class="sp-card"><strong>700+</strong><span>Seguidores en @tikafap.calidad</span></div>
-      <div class="sp-card"><strong>100%</strong><span>Fabricación propia en Córdoba</span></div>
+      <a class="sp-card sp-card-link" href="https://www.instagram.com/tikafap.fabrica/" target="_blank" rel="noopener">
+        <div class="sp-ig-icon">📷</div>
+        <strong>@tikafap.fabrica</strong>
+        <span>Ver perfil en Instagram →</span>
+      </a>
+      <a class="sp-card sp-card-link" href="https://www.instagram.com/tikafap.calidad/" target="_blank" rel="noopener">
+        <div class="sp-ig-icon">📷</div>
+        <strong>@tikafap.calidad</strong>
+        <span>Ver perfil en Instagram →</span>
+      </a>
+      <div class="sp-card"><strong>+15 años</strong><span>En el mercado</span></div>
     </div>
 
     <div class="testimonial-videos">
@@ -814,7 +830,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       <span class="eyebrow">¿Por qué comprar en TIKAFAP?</span>
       <h2>Fabricación propia, calidad de fábrica</h2>
     </div>
-    <p class="why-intro">TIKAFAP es una fábrica de sillas, mesas y banquetas de caño con base en el interior de Córdoba, con la mira puesta en posicionarnos a nivel nacional. Controlamos cada etapa del proceso —estructura, tapizados y terminaciones— para ofrecer mobiliario duradero a revendedores, instituciones, organizadores de eventos, bares y restaurantes de todo el país.</p>
+    <p class="why-intro">TIKAFAP es una empresa familiar con más de 15 años en el mercado, atendida por su propio dueño y sus hijos. Controlamos cada etapa del proceso —estructura, tapizados y terminaciones— para ofrecer mobiliario duradero a revendedores, instituciones, organizadores de eventos, bares y restaurantes de todo el país.</p>
     <div class="why-grid">
       <div class="why-card">
         <div class="why-icon">📊</div>
@@ -832,9 +848,9 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
         <p>Distintos colores de tapizado para que el mobiliario acompañe cada proyecto.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">🤝</div>
-        <h3>Atención directa</h3>
-        <p>Hablás directamente con la fábrica: sin intermediarios, con seguimiento personalizado de tu pedido.</p>
+        <div class="why-icon">👨‍👩‍👧‍👦</div>
+        <h3>Empresa familiar</h3>
+        <p>Atendida por su propio dueño y sus hijos: hablás directo con la familia que fabrica, sin intermediarios.</p>
       </div>
     </div>
   </div>
@@ -888,7 +904,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       </details>
       <details class="faq-item">
         <summary>¿Venden por mayor y por menor?</summary>
-        <p>Sí, atendemos tanto la compra de una silla suelta como pedidos grandes para revendedores e instituciones.</p>
+        <p>Somos proveedores mayoristas a todo el país. La venta minorista (una sola unidad) la atendemos solo en Córdoba.</p>
       </details>
       <details class="faq-item">
         <summary>¿Cómo hago mi pedido?</summary>
@@ -912,26 +928,27 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <div>
       <span class="eyebrow">Contacto</span>
       <h2>Pedí tu presupuesto mayorista sin cargo</h2>
-      <p>Escribinos por WhatsApp contándonos qué modelo te interesa y la cantidad que necesitás. Te respondemos con catálogo, escala de precios y asesoramiento.</p>
+      <p>Todas nuestras ventas se realizan exclusivamente por WhatsApp, a través de nuestras 2 líneas comerciales. Escribinos contándonos qué modelo te interesa y la cantidad que necesitás.</p>
       <div class="contact-cards">
         <a class="contact-card" href="https://wa.me/5493512402427" target="_blank" rel="noopener">
           <div class="ic">📲</div>
-          <div><strong>WhatsApp Fábrica</strong><span>+54 9 351 240-2427</span></div>
+          <div><strong>Línea comercial 1 · Priscila</strong><span>+54 9 351 240-2427</span></div>
         </a>
         <a class="contact-card" href="https://wa.me/c/5493518668174" target="_blank" rel="noopener">
-          <div class="ic">📖</div>
-          <div><strong>Catálogo por WhatsApp</strong><span>+54 9 351 866-8174</span></div>
+          <div class="ic">📲</div>
+          <div><strong>Línea comercial 2</strong><span>+54 9 351 866-8174</span></div>
         </a>
-        <div class="contact-card">
+        <a class="contact-card" href="https://maps.app.goo.gl/7pCSg15fD9UJm7T36" target="_blank" rel="noopener">
           <div class="ic">📍</div>
-          <div><strong>Ubicación</strong><span>Interior de Córdoba · Envíos a todo el país</span></div>
-        </div>
+          <div><strong>Ubicación</strong><span>Suipacha 2437, Córdoba Capital · Ver en el mapa</span></div>
+        </a>
       </div>
     </div>
     <div class="map-box">
       <div>
         <img class="logo-marca-img" src="img/logo-marca.jpeg" alt="TIKAFAP Calidad & Diseño">
-        <p style="color:var(--gray);">Fábrica de sillas, mesas y banquetas de caño<br>Envíos a todo el país</p>
+        <p style="color:var(--gray);">Suipacha 2437, Córdoba Capital<br>Mayoristas a todo el país</p>
+        <a href="https://maps.app.goo.gl/7pCSg15fD9UJm7T36" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;color:var(--blue);font-weight:700;font-size:14px;">📍 Ver en Google Maps →</a>
       </div>
     </div>
   </div>
@@ -940,7 +957,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
 <footer>
   <div class="container">
     <div class="footer-logo"><span class="logo-badge"><img src="img/logo-circular.jpeg" alt="Logo TIKAFAP"></span>TIKAFAP</div>
-    <p>Fábrica de sillas, mesas y banquetas de caño · Envíos a todo el país</p>
+    <p>Suipacha 2437, Córdoba Capital · Mayoristas a todo el país</p>
     <div class="socials">
       <a href="https://www.instagram.com/tikafap.fabrica" target="_blank" rel="noopener" aria-label="Instagram fábrica">IG</a>
       <a href="https://www.instagram.com/tikafap.calidad" target="_blank" rel="noopener" aria-label="Instagram calidad y diseño">IG</a>
