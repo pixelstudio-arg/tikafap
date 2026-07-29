@@ -964,6 +964,12 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   const navToggle = document.getElementById('navToggle');
   navToggle.addEventListener('click', () => nav.classList.toggle('open'));
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+    a.addEventListener('click', () => {
+      if (typeof fbq === 'function') fbq('track', 'Lead');
+    });
+  });
 </script>
 
 </body>
