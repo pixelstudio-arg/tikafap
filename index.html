@@ -69,7 +69,10 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     border-radius:50px;
     font-weight:700;
     font-size:15px;
-    transition:transform .2s ease, box-shadow .2s ease;
+    border:none;
+    font-family:inherit;
+    cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
     white-space:nowrap;
   }
   .btn:hover{transform:translateY(-2px);}
@@ -79,8 +82,10 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     box-shadow:0 8px 20px rgba(47,111,209,.35);
   }
   .btn-primary:hover{background:var(--blue-dark);}
+  .btn-primary:disabled{opacity:.45;cursor:not-allowed;box-shadow:none;transform:none;}
   .btn-outline{
     border:2px solid #fff;
+    background:none;
     color:#fff;
   }
   .btn-outline:hover{background:#fff;color:var(--navy-dark);}
@@ -174,6 +179,17 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .profile-card h3{font-size:16px;margin-bottom:8px;}
   .profile-card p{font-size:13px;color:#c9d7e5;}
 
+  /* Gastronomia */
+  .gastro{background:#fff;}
+  .gastro-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .gastro-content h2{font-size:34px;color:var(--navy-dark);margin-bottom:16px;}
+  .gastro-content p{color:var(--gray);font-size:16px;margin-bottom:26px;}
+  .gastro-features{display:flex;flex-direction:column;gap:14px;margin-bottom:30px;}
+  .gastro-feature{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;color:var(--black);}
+  .gastro-feature span{font-size:18px;flex-shrink:0;}
+  .gastro-img{border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.12);aspect-ratio:4/5;}
+  .gastro-img img{width:100%;height:100%;object-fit:cover;}
+
   /* Productos */
   .products{background:#fff;}
   .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
@@ -201,10 +217,39 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     display:inline-block;background:var(--navy);color:#fff;font-size:11px;font-weight:700;
     padding:4px 10px;border-radius:20px;margin-bottom:12px;letter-spacing:.5px;text-transform:uppercase;width:fit-content;
   }
-  .product-body a{
+  .product-body a, .product-body button{
     font-size:13.5px;font-weight:700;color:var(--blue);display:inline-flex;align-items:center;gap:6px;
+    border:none;background:none;padding:0;font-family:inherit;cursor:pointer;text-align:left;
   }
-  .product-body a:hover{color:var(--blue-dark);}
+  .product-body a:hover, .product-body button:hover{color:var(--blue-dark);}
+
+  /* Bestsellers animado */
+  .bestsellers{background:var(--cream);overflow:hidden;}
+  .bestsellers .section-head{margin-bottom:36px;}
+  .bs-track-wrap{
+    overflow:hidden;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  }
+  .bs-track{display:flex;gap:24px;width:max-content;animation:bsScroll 18s linear infinite;}
+  .bs-track:hover{animation-play-state:paused;}
+  @keyframes bsScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  .bs-card{
+    flex:0 0 auto;width:250px;border-radius:18px;overflow:hidden;
+    background:#fff;box-shadow:0 10px 26px rgba(0,0,0,.08);
+    border:none;padding:0;font-family:inherit;text-align:left;cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .bs-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.14);}
+  .bs-card-img{position:relative;aspect-ratio:3/4;overflow:hidden;}
+  .bs-card-img img{width:100%;height:100%;object-fit:cover;}
+  .bs-badge{
+    position:absolute;top:12px;left:12px;background:#e0393f;color:#fff;font-size:10.5px;font-weight:800;
+    padding:5px 12px;border-radius:20px;letter-spacing:.3px;text-transform:uppercase;
+  }
+  .bs-body{padding:16px 18px 20px;}
+  .bs-body h3{font-size:16.5px;color:var(--navy-dark);margin-bottom:4px;}
+  .bs-body span{font-size:13px;color:var(--blue);font-weight:700;}
 
   /* Combos */
   .combos{background:var(--cream);}
@@ -235,8 +280,11 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .combo-cta-note{
     text-align:center;margin-top:34px;color:var(--gray);font-size:15px;
   }
-  .combo-cta-note a{color:var(--blue);font-weight:700;}
-  .combo-cta-note a:hover{color:var(--blue-dark);}
+  .combo-cta-note a, .combo-cta-note button{
+    color:var(--blue);font-weight:700;border:none;background:none;padding:0;font-family:inherit;
+    font-size:inherit;cursor:pointer;
+  }
+  .combo-cta-note a:hover, .combo-cta-note button:hover{color:var(--blue-dark);}
 
   /* Precios por mayor */
   .pricing{background:#fff;}
@@ -296,15 +344,6 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     background:var(--navy-dark);box-shadow:0 10px 26px rgba(0,0,0,.12);
   }
   .tv-card video{width:100%;height:100%;object-fit:cover;display:block;}
-  .tv-card .tv-placeholder{
-    width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:10px;color:#c9d7e5;text-align:center;padding:20px;
-  }
-  .tv-card .tv-placeholder .tv-play{
-    width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.12);
-    display:flex;align-items:center;justify-content:center;font-size:22px;
-  }
-  .tv-card .tv-placeholder span{font-size:13px;}
   .tv-card figcaption{
     position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
     background:linear-gradient(180deg, rgba(10,28,61,0), rgba(10,28,61,.9));
@@ -314,13 +353,16 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   /* 6. Categorias */
   .categories{background:#fff;}
   .cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-  .cat-card{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 10px 26px rgba(0,0,0,.1);display:block;}
+  .cat-card{
+    position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 10px 26px rgba(0,0,0,.1);
+    display:block;border:none;padding:0;width:100%;font-family:inherit;cursor:pointer;
+  }
   .cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
   .cat-card:hover img{transform:scale(1.06);}
   .cat-overlay{
     position:absolute;inset:0;
     background:linear-gradient(180deg, rgba(10,28,61,0) 40%, rgba(10,28,61,.92));
-    display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:#fff;
+    display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:#fff;text-align:left;
   }
   .cat-overlay h3{font-size:19px;margin-bottom:6px;}
   .cat-overlay p{font-size:13px;opacity:.9;margin-bottom:10px;}
@@ -383,7 +425,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .contact-cards{display:flex;flex-direction:column;gap:16px;}
   .contact-card{
     display:flex;align-items:center;gap:16px;padding:20px 22px;border-radius:14px;
-    background:var(--cream);
+    background:var(--cream);border:none;width:100%;font-family:inherit;text-align:left;cursor:pointer;
   }
   .contact-card .ic{
     width:46px;height:46px;border-radius:50%;background:var(--navy);color:#fff;
@@ -404,10 +446,11 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   footer{background:var(--black);color:#c9c9c9;padding:50px 0 24px;text-align:center;font-size:13.5px;}
   footer .footer-logo{color:#fff;font-weight:800;font-size:20px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px;}
   footer .socials{display:flex;justify-content:center;gap:16px;margin:18px 0;}
-  footer .socials a{
+  footer .socials a, footer .socials button{
     width:38px;height:38px;border-radius:50%;background:#232323;display:flex;align-items:center;justify-content:center;color:#fff;
+    border:none;font-family:inherit;font-size:13px;cursor:pointer;
   }
-  footer .socials a:hover{background:var(--blue);}
+  footer .socials a:hover, footer .socials button:hover{background:var(--blue);}
 
   /* WhatsApp float */
   .wa-float{
@@ -423,8 +466,39 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
   }
 
+  /* Modal de cotizacion */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(10,28,61,.65);
+    display:none;align-items:center;justify-content:center;z-index:300;padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .quote-modal{
+    background:#fff;border-radius:20px;max-width:580px;width:100%;max-height:88vh;overflow-y:auto;
+    padding:34px 30px;position:relative;
+  }
+  .modal-close{
+    position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;
+    border:none;background:var(--cream);color:var(--navy-dark);font-size:16px;cursor:pointer;font-family:inherit;
+  }
+  .modal-close:hover{background:#e8e2d6;}
+  .quote-modal h3{font-size:22px;color:var(--navy-dark);margin-bottom:6px;padding-right:30px;}
+  .quote-modal-sub{color:var(--gray);font-size:14px;margin-bottom:26px;}
+  .quote-group{margin-bottom:22px;}
+  .quote-group label{display:block;font-weight:700;font-size:14px;color:var(--navy-dark);margin-bottom:10px;}
+  .quote-optional{font-weight:400;color:var(--gray);font-size:12px;}
+  .chip-group{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    border:1.5px solid #e0dcd2;background:#fff;color:var(--black);
+    padding:9px 16px;border-radius:50px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;
+    transition:all .15s ease;
+  }
+  .chip:hover{border-color:var(--blue);}
+  .chip.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+  .quote-submit{width:100%;justify-content:center;margin-top:6px;}
+  .quote-hint{text-align:center;font-size:12.5px;color:var(--gray);margin-top:10px;}
+
   @media(max-width:900px){
-    .contact-grid,.ps-grid{grid-template-columns:1fr;}
+    .contact-grid,.ps-grid,.gastro-grid{grid-template-columns:1fr;}
     .product-grid,.price-grid,.profile-grid{grid-template-columns:repeat(2,1fr);}
     .gallery-grid{grid-template-columns:repeat(2,1fr);}
     .sp-grid,.cat-grid,.combo-grid,.tv-grid{grid-template-columns:1fr;}
@@ -437,12 +511,14 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     nav ul{flex-direction:column;gap:24px;}
     .nav-toggle{display:block;}
     .qb-item{min-width:100%;}
+    .gastro-img{order:-1;}
   }
   @media(max-width:560px){
     .product-grid{grid-template-columns:1fr 1fr;}
     .price-grid,.profile-grid,.why-grid{grid-template-columns:1fr;}
     .gallery-grid{grid-template-columns:1fr 1fr;}
     .hero-stats{gap:24px;}
+    .bs-card{width:200px;}
   }
 </style>
 </head>
@@ -475,7 +551,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <h1>Sillas de caño al por mayor <span>directo de fábrica</span></h1>
     <p>Fabricamos sillas, mesas y banquetas de caño para revendedores, organizadores de eventos, salones de eventos, instituciones (clubes, iglesias, municipios) bares y restaurantes. Precios por escala de cantidad y despacho a todo el país.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="https://wa.me/5493518668174?text=Hola%20TIKAFAP!%20Quiero%20pedir%20un%20presupuesto%20mayorista" target="_blank" rel="noopener">📲 Pedir presupuesto mayorista</a>
+      <button type="button" class="btn btn-primary" data-quote-trigger>📲 Pedir presupuesto mayorista</button>
       <a class="btn btn-outline" href="#precios">Ver precios por mayor</a>
     </div>
     <div class="hero-stats">
@@ -552,6 +628,27 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ESPECIAL GASTRONOMIA -->
+<section class="gastro" id="gastronomia">
+  <div class="container gastro-grid">
+    <div class="gastro-content">
+      <span class="eyebrow">Especial gastronomía</span>
+      <h2>Pensado para bares, restaurantes y locales gastronómicos</h2>
+      <p>Sabemos lo que exige un local gastronómico: mobiliario que aguante el uso diario, que sea fácil de limpiar y que sume a la estética del salón.</p>
+      <div class="gastro-features">
+        <div class="gastro-feature"><span>🍽️</span>Resistencia probada para el uso intensivo diario de un local.</div>
+        <div class="gastro-feature"><span>🧽</span>Tapizados fáciles de limpiar, pensados para el día a día.</div>
+        <div class="gastro-feature"><span>📦</span>Diseño apilable: ahorrás espacio de guardado fuera de horario.</div>
+        <div class="gastro-feature"><span>🎨</span>Colores y estilos de tapizado personalizados a tono con tu local.</div>
+      </div>
+      <button type="button" class="btn btn-primary" data-quote-trigger data-quote-perfil="Bar o restaurante">📲 Quiero equipar mi local</button>
+    </div>
+    <div class="gastro-img">
+      <img src="img/api-tap-1.jpeg" alt="Sillas TIKAFAP en un bar">
+    </div>
+  </div>
+</section>
+
 <!-- 3. PRODUCTOS DESTACADOS -->
 <section class="products" id="productos">
   <div class="container">
@@ -569,7 +666,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
           <h3>Silla Api Tap</h3>
           <p>Diseño clásico de respaldo tapizado, ideal para bares y espacios gastronómicos con estilo cálido.</p>
           <p class="product-price">$28.500 <span>unidad · desde $26.200 por 50+</span></p>
-          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Api%20Tap" target="_blank" rel="noopener">Consultar por esta silla →</a>
+          <button type="button" data-quote-trigger data-quote-product="Silla Api Tap">Consultar por esta silla →</button>
         </div>
       </div>
 
@@ -580,7 +677,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
           <h3>Silla Apilable</h3>
           <p>Respaldo de caño con líneas simples y asiento tapizado. Fácil de apilar y guardar entre usos.</p>
           <p class="product-price">$26.000 <span>unidad · desde $24.000 por 50+</span></p>
-          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Apilable" target="_blank" rel="noopener">Consultar por esta silla →</a>
+          <button type="button" data-quote-trigger data-quote-product="Silla Apilable">Consultar por esta silla →</button>
         </div>
       </div>
 
@@ -591,7 +688,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
           <h3>Silla Class Premium</h3>
           <p>Respaldo alto totalmente tapizado, un modelo más elegante para salones y eventos.</p>
           <p class="product-price">$40.500 <span>unidad · desde $38.500 por 50+</span></p>
-          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Class%20Premium" target="_blank" rel="noopener">Consultar por esta silla →</a>
+          <button type="button" data-quote-trigger data-quote-product="Silla Class Premium">Consultar por esta silla →</button>
         </div>
       </div>
 
@@ -602,10 +699,53 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
           <h3>Silla Salomé</h3>
           <p>Estructura robusta de caño doble y respaldo tapizado, pensada para uso comercial intensivo.</p>
           <p class="product-price">$31.000 <span>unidad · desde $28.300 por 50+</span></p>
-          <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20la%20Silla%20Salom%C3%A9" target="_blank" rel="noopener">Consultar por esta silla →</a>
+          <button type="button" data-quote-trigger data-quote-product="Silla Salomé">Consultar por esta silla →</button>
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- BANNER ANIMADO MAS VENDIDOS -->
+<section class="bestsellers">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Los favoritos</span>
+      <h2>Nuestros modelos más vendidos</h2>
+      <p>Silla Apilable y Silla Salomé: las más elegidas por revendedores, instituciones y locales gastronómicos.</p>
+    </div>
+  </div>
+  <div class="bs-track-wrap">
+    <div class="bs-track">
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
     </div>
   </div>
 </section>
@@ -644,7 +784,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
         </div>
       </div>
     </div>
-    <p class="combo-cta-note">¿Necesitás otra cantidad de sillas o una medida distinta de mesa? <a href="https://wa.me/5493512402427?text=Hola!%20Quiero%20armar%20un%20combo%20de%20sillas%20%2B%20mesa" target="_blank" rel="noopener">Consultanos por WhatsApp →</a></p>
+    <p class="combo-cta-note">¿Necesitás otra cantidad de sillas o una medida distinta de mesa? <button type="button" data-quote-trigger data-quote-product="Combo silla + mesa">Consultanos por WhatsApp →</button></p>
   </div>
 </section>
 
@@ -692,7 +832,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     </div>
     <p class="pricing-note">Precios en pesos argentinos, sujetos a variación sin previo aviso. Combos silla + mesa, mesas y banquetas a consultar según cantidad y medida.<br>Somos proveedores <strong>mayoristas a todo el país</strong>. La venta <strong>minorista (por unidad) es solo en Córdoba</strong>.</p>
     <div class="pricing-cta">
-      <a class="btn btn-primary" href="https://wa.me/5493518668174?text=Hola%20TIKAFAP!%20Quiero%20consultar%20precios%20por%20mayor" target="_blank" rel="noopener">📲 Consultar precio para mi cantidad</a>
+      <button type="button" class="btn btn-primary" data-quote-trigger>📲 Consultar precio para mi cantidad</button>
     </div>
   </div>
 </section>
@@ -726,7 +866,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       </div>
     </div>
     <div class="ps-cta">
-      <a class="btn btn-primary" href="https://wa.me/5493518668174?text=Hola%20TIKAFAP!%20Quiero%20contarles%20qu%C3%A9%20necesito%20para%20mi%20pedido%20por%20mayor" target="_blank" rel="noopener">📲 Contanos qué necesitás</a>
+      <button type="button" class="btn btn-primary" data-quote-trigger>📲 Contanos qué necesitás</button>
     </div>
   </div>
 </section>
@@ -740,16 +880,12 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       <p>Nada de fotos de stock: así llegan nuestros pedidos a bares, instituciones y hogares en distintos puntos del país.</p>
     </div>
     <div class="sp-grid">
-      <a class="sp-card sp-card-link" href="https://www.instagram.com/tikafap.fabrica/" target="_blank" rel="noopener">
-        <div class="sp-ig-icon">📷</div>
-        <strong>@tikafap.fabrica</strong>
-        <span>Ver perfil en Instagram →</span>
-      </a>
       <a class="sp-card sp-card-link" href="https://www.instagram.com/tikafap.calidad/" target="_blank" rel="noopener">
         <div class="sp-ig-icon">📷</div>
         <strong>@tikafap.calidad</strong>
         <span>Ver perfil en Instagram →</span>
       </a>
+      <div class="sp-card"><strong>100%</strong><span>Fabricación propia</span></div>
       <div class="sp-card"><strong>+15 años</strong><span>En el mercado</span></div>
     </div>
 
@@ -782,7 +918,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       </div>
     </div>
 
-    <p class="sp-note">Mirá más entregas y los testimonios reales de nuestros clientes en el highlight "Testimonios TIKA" de <a href="https://www.instagram.com/tikafap.fabrica" target="_blank" rel="noopener">@tikafap.fabrica</a> en Instagram →</p>
+    <p class="sp-note">Mirá más entregas y contenido real en nuestro Instagram <a href="https://www.instagram.com/tikafap.calidad/" target="_blank" rel="noopener">@tikafap.calidad</a> →</p>
   </div>
 </section>
 
@@ -811,14 +947,14 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
           <span class="cat-link">Ver combos →</span>
         </div>
       </a>
-      <a class="cat-card" href="https://wa.me/5493512402427?text=Hola!%20Quiero%20consultar%20por%20mesas%20y%20banquetas" target="_blank" rel="noopener">
+      <button type="button" class="cat-card" data-quote-trigger data-quote-product="Mesas y banquetas">
         <img src="img/banquetas.jpeg" alt="Banquetas de caño TIKAFAP">
         <div class="cat-overlay">
           <h3>Mesas y banquetas</h3>
           <p>Fabricadas a juego con nuestras sillas, a medida.</p>
           <span class="cat-link">Consultar →</span>
         </div>
-      </a>
+      </button>
     </div>
   </div>
 </section>
@@ -844,8 +980,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       </div>
       <div class="why-card">
         <div class="why-icon">🧵</div>
-        <h3>Tapizados a elección</h3>
-        <p>Distintos colores de tapizado para que el mobiliario acompañe cada proyecto.</p>
+        <h3>Colores y estilos personalizados</h3>
+        <p>Tapizados en el color o estilo que necesites, dentro de la variedad disponible.</p>
       </div>
       <div class="why-card">
         <div class="why-icon">👨‍👩‍👧‍👦</div>
@@ -896,7 +1032,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       </details>
       <details class="faq-item">
         <summary>¿Puedo elegir el color del tapizado?</summary>
-        <p>Sí, trabajamos con distintos colores de tapizado sujeto a disponibilidad de stock. Contanos qué buscás y te asesoramos.</p>
+        <p>Sí, podés personalizar el color y el estilo del tapizado dentro de la variedad disponible. Contanos qué buscás y te asesoramos.</p>
       </details>
       <details class="faq-item">
         <summary>¿Tienen stock o fabrican por pedido?</summary>
@@ -919,7 +1055,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   <div class="container">
     <h2>¿Sos revendedor, organizás eventos o representás una institución?</h2>
     <p>Contanos cuántas sillas necesitás y te pasamos el precio por escala que te corresponde.</p>
-    <a class="btn btn-primary" href="https://wa.me/5493518668174?text=Hola%20TIKAFAP!%20Quiero%20hacer%20un%20pedido%20por%20mayor" target="_blank" rel="noopener">📲 Hablar por WhatsApp</a>
+    <button type="button" class="btn btn-primary" data-quote-trigger>📲 Hablar por WhatsApp</button>
   </div>
 </section>
 
@@ -928,16 +1064,12 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <div>
       <span class="eyebrow">Contacto</span>
       <h2>Pedí tu presupuesto mayorista sin cargo</h2>
-      <p>Todas nuestras ventas se realizan exclusivamente por WhatsApp, a través de nuestras 2 líneas comerciales. Escribinos contándonos qué modelo te interesa y la cantidad que necesitás.</p>
+      <p>Todas nuestras ventas se realizan exclusivamente por WhatsApp. Escribinos contándonos qué modelo te interesa y la cantidad que necesitás.</p>
       <div class="contact-cards">
-        <a class="contact-card" href="https://wa.me/5493512402427" target="_blank" rel="noopener">
+        <button type="button" class="contact-card" data-quote-trigger>
           <div class="ic">📲</div>
-          <div><strong>Línea comercial 1 · Priscila</strong><span>+54 9 351 240-2427</span></div>
-        </a>
-        <a class="contact-card" href="https://wa.me/c/5493518668174" target="_blank" rel="noopener">
-          <div class="ic">📲</div>
-          <div><strong>Línea comercial 2 · Facundo</strong><span>+54 9 351 866-8174</span></div>
-        </a>
+          <div><strong>WhatsApp · Facundo</strong><span>+54 9 351 866-8174</span></div>
+        </button>
         <a class="contact-card" href="https://maps.app.goo.gl/7pCSg15fD9UJm7T36" target="_blank" rel="noopener">
           <div class="ic">📍</div>
           <div><strong>Ubicación</strong><span>Suipacha 2437, Córdoba Capital · Ver en el mapa</span></div>
@@ -959,15 +1091,72 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <div class="footer-logo"><span class="logo-badge"><img src="img/logo-circular.jpeg" alt="Logo TIKAFAP"></span>TIKAFAP</div>
     <p>Suipacha 2437, Córdoba Capital · Mayoristas a todo el país</p>
     <div class="socials">
-      <a href="https://www.instagram.com/tikafap.fabrica" target="_blank" rel="noopener" aria-label="Instagram fábrica">IG</a>
-      <a href="https://www.instagram.com/tikafap.calidad" target="_blank" rel="noopener" aria-label="Instagram calidad y diseño">IG</a>
-      <a href="https://wa.me/5493518668174" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+      <a href="https://www.instagram.com/tikafap.calidad" target="_blank" rel="noopener" aria-label="Instagram TIKAFAP">IG</a>
+      <button type="button" data-quote-trigger aria-label="WhatsApp">WA</button>
     </div>
     <p style="margin-top:10px;opacity:.6;">© <span id="year"></span> TIKAFAP. Todos los derechos reservados.</p>
   </div>
 </footer>
 
 <a class="wa-float" href="https://wa.me/5493518668174?text=Hola%20TIKAFAP!" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<!-- MODAL DE COTIZACION -->
+<div class="modal-overlay" id="quoteOverlay">
+  <div class="quote-modal" role="dialog" aria-modal="true" aria-labelledby="quoteModalTitle">
+    <button type="button" class="modal-close" id="quoteClose" aria-label="Cerrar">✕</button>
+    <h3 id="quoteModalTitle">Contanos qué necesitás</h3>
+    <p class="quote-modal-sub">Elegí las opciones y te escribimos por WhatsApp con tu consulta. Sin necesidad de escribir nada.</p>
+
+    <div class="quote-group">
+      <label>¿Cómo te identificás?</label>
+      <div class="chip-group" data-field="perfil" data-mode="single">
+        <button type="button" class="chip" data-value="Revendedor">Revendedor</button>
+        <button type="button" class="chip" data-value="Organizador de eventos">Organizador de eventos</button>
+        <button type="button" class="chip" data-value="Institución (club, iglesia, municipio)">Institución</button>
+        <button type="button" class="chip" data-value="Bar o restaurante">Bar o restaurante</button>
+        <button type="button" class="chip" data-value="Local gastronómico">Local gastronómico</button>
+        <button type="button" class="chip" data-value="Otro">Otro</button>
+      </div>
+    </div>
+
+    <div class="quote-group">
+      <label>¿Qué te interesa?</label>
+      <div class="chip-group" data-field="producto" data-mode="single">
+        <button type="button" class="chip" data-value="Silla Api Tap">Silla Api Tap</button>
+        <button type="button" class="chip" data-value="Silla Apilable">Silla Apilable</button>
+        <button type="button" class="chip" data-value="Silla Class Premium">Silla Class Premium</button>
+        <button type="button" class="chip" data-value="Silla Salomé">Silla Salomé</button>
+        <button type="button" class="chip" data-value="Combo silla + mesa">Combo silla + mesa</button>
+        <button type="button" class="chip" data-value="Mesas y banquetas">Mesas y banquetas</button>
+        <button type="button" class="chip" data-value="No estoy seguro">No estoy seguro</button>
+      </div>
+    </div>
+
+    <div class="quote-group">
+      <label>¿Cuántas unidades querés cotizar?</label>
+      <div class="chip-group" data-field="cantidad" data-mode="single">
+        <button type="button" class="chip" data-value="1 unidad">1 unidad</button>
+        <button type="button" class="chip" data-value="2 a 19 unidades">2 a 19</button>
+        <button type="button" class="chip" data-value="20 a 49 unidades">20 a 49</button>
+        <button type="button" class="chip" data-value="50 unidades o más">50 o más</button>
+      </div>
+    </div>
+
+    <div class="quote-group">
+      <label>¿Algo más que debamos saber? <span class="quote-optional">(opcional)</span></label>
+      <div class="chip-group" data-field="extra" data-mode="multi">
+        <button type="button" class="chip" data-value="Envío fuera de Córdoba">Envío fuera de Córdoba</button>
+        <button type="button" class="chip" data-value="Retiro en Córdoba Capital">Retiro en Córdoba Capital</button>
+        <button type="button" class="chip" data-value="Necesito factura">Necesito factura</button>
+        <button type="button" class="chip" data-value="Tapizado o color personalizado">Tapizado/color personalizado</button>
+        <button type="button" class="chip" data-value="Es urgente">Es urgente</button>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary quote-submit" id="quoteSubmit" disabled>📲 Enviar consulta por WhatsApp</button>
+    <p class="quote-hint" id="quoteHint">Elegí al menos perfil, producto y cantidad para continuar.</p>
+  </div>
+</div>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -985,6 +1174,97 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
     a.addEventListener('click', () => {
       if (typeof fbq === 'function') fbq('track', 'Lead');
+    });
+  });
+
+  /* ---- Modal de cotizacion por WhatsApp ---- */
+  const QUOTE_NUMBER = '5493518668174';
+  const quoteState = { perfil: null, producto: null, cantidad: null, extra: [] };
+  const overlay = document.getElementById('quoteOverlay');
+  const submitBtn = document.getElementById('quoteSubmit');
+
+  function resetChipsUI(){
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  }
+
+  function setChipActive(field, value){
+    const btn = document.querySelector('.chip-group[data-field="' + field + '"] .chip[data-value="' + value.replace(/"/g,'\\"') + '"]');
+    if (btn) btn.classList.add('active');
+  }
+
+  function updateSubmitState(){
+    const ok = quoteState.perfil && quoteState.producto && quoteState.cantidad;
+    submitBtn.disabled = !ok;
+  }
+
+  function openQuoteModal(prefill){
+    prefill = prefill || {};
+    quoteState.perfil = prefill.perfil || null;
+    quoteState.producto = prefill.producto || null;
+    quoteState.cantidad = null;
+    quoteState.extra = [];
+    resetChipsUI();
+    if (quoteState.perfil) setChipActive('perfil', quoteState.perfil);
+    if (quoteState.producto) setChipActive('producto', quoteState.producto);
+    updateSubmitState();
+    overlay.classList.add('open');
+  }
+
+  function closeQuoteModal(){
+    overlay.classList.remove('open');
+  }
+
+  document.querySelectorAll('.chip-group').forEach(group => {
+    const field = group.dataset.field;
+    const mode = group.dataset.mode;
+    group.querySelectorAll('.chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        if (mode === 'single') {
+          group.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          quoteState[field] = chip.dataset.value;
+        } else {
+          chip.classList.toggle('active');
+          if (chip.classList.contains('active')) {
+            quoteState.extra.push(chip.dataset.value);
+          } else {
+            quoteState.extra = quoteState.extra.filter(v => v !== chip.dataset.value);
+          }
+        }
+        updateSubmitState();
+      });
+    });
+  });
+
+  submitBtn.addEventListener('click', () => {
+    if (submitBtn.disabled) return;
+    const lines = [
+      'Hola TIKAFAP! Quiero cotizar:',
+      'Perfil: ' + quoteState.perfil,
+      'Producto de interés: ' + quoteState.producto,
+      'Cantidad a cotizar: ' + quoteState.cantidad,
+      'Info adicional: ' + (quoteState.extra.length ? quoteState.extra.join(', ') : 'Ninguna')
+    ];
+    const text = encodeURIComponent(lines.join('\n'));
+    if (typeof fbq === 'function') fbq('track', 'Lead');
+    window.open('https://wa.me/' + QUOTE_NUMBER + '?text=' + text, '_blank', 'noopener');
+    closeQuoteModal();
+  });
+
+  document.getElementById('quoteClose').addEventListener('click', closeQuoteModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeQuoteModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeQuoteModal();
+  });
+
+  document.querySelectorAll('[data-quote-trigger]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      openQuoteModal({
+        producto: btn.dataset.quoteProduct || null,
+        perfil: btn.dataset.quotePerfil || null
+      });
     });
   });
 </script>
