@@ -228,10 +228,9 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .bestsellers .section-head{margin-bottom:36px;}
   .bs-track-wrap{
     overflow:hidden;
-    -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
-    mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+    width:100vw;
   }
-  .bs-track{display:flex;gap:24px;width:max-content;animation:bsScroll 18s linear infinite;}
+  .bs-track{display:flex;gap:24px;width:max-content;animation:bsScroll 34s linear infinite;}
   .bs-track:hover{animation-play-state:paused;}
   @keyframes bsScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
   .bs-card{
@@ -628,23 +627,129 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ESPECIAL GASTRONOMIA -->
-<section class="gastro" id="gastronomia">
-  <div class="container gastro-grid">
-    <div class="gastro-content">
-      <span class="eyebrow">Especial gastronomía</span>
-      <h2>Pensado para bares, restaurantes y locales gastronómicos</h2>
-      <p>Sabemos lo que exige un local gastronómico: mobiliario que aguante el uso diario, que sea fácil de limpiar y que sume a la estética del salón.</p>
-      <div class="gastro-features">
-        <div class="gastro-feature"><span>🍽️</span>Resistencia probada para el uso intensivo diario de un local.</div>
-        <div class="gastro-feature"><span>🧽</span>Tapizados fáciles de limpiar, pensados para el día a día.</div>
-        <div class="gastro-feature"><span>📦</span>Diseño apilable: ahorrás espacio de guardado fuera de horario.</div>
-        <div class="gastro-feature"><span>🎨</span>Colores y estilos de tapizado personalizados a tono con tu local.</div>
-      </div>
-      <button type="button" class="btn btn-primary" data-quote-trigger data-quote-perfil="Bar o restaurante">📲 Quiero equipar mi local</button>
+<!-- BANNER ANIMADO MAS VENDIDOS -->
+<section class="bestsellers">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Los favoritos</span>
+      <h2>Nuestros modelos más vendidos</h2>
+      <p>Silla Apilable y Silla Salomé: las más elegidas por revendedores, instituciones y locales gastronómicos.</p>
     </div>
-    <div class="gastro-img">
-      <img src="img/api-tap-1.jpeg" alt="Sillas TIKAFAP en un bar">
+  </div>
+  <div class="bs-track-wrap">
+    <div class="bs-track">
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
+      </button>
+      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
+        <div class="bs-card-img">
+          <span class="bs-badge">🔥 Más vendida</span>
+          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
+        </div>
+        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
+      </button>
     </div>
   </div>
 </section>
@@ -703,49 +808,6 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- BANNER ANIMADO MAS VENDIDOS -->
-<section class="bestsellers">
-  <div class="container">
-    <div class="section-head">
-      <span class="eyebrow">Los favoritos</span>
-      <h2>Nuestros modelos más vendidos</h2>
-      <p>Silla Apilable y Silla Salomé: las más elegidas por revendedores, instituciones y locales gastronómicos.</p>
-    </div>
-  </div>
-  <div class="bs-track-wrap">
-    <div class="bs-track">
-      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
-        <div class="bs-card-img">
-          <span class="bs-badge">🔥 Más vendida</span>
-          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
-        </div>
-        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
-      </button>
-      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
-        <div class="bs-card-img">
-          <span class="bs-badge">🔥 Más vendida</span>
-          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
-        </div>
-        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
-      </button>
-      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Apilable">
-        <div class="bs-card-img">
-          <span class="bs-badge">🔥 Más vendida</span>
-          <img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP">
-        </div>
-        <div class="bs-body"><h3>Silla Apilable</h3><span>Consultar precio →</span></div>
-      </button>
-      <button type="button" class="bs-card" data-quote-trigger data-quote-product="Silla Salomé">
-        <div class="bs-card-img">
-          <span class="bs-badge">🔥 Más vendida</span>
-          <img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP">
-        </div>
-        <div class="bs-body"><h3>Silla Salomé</h3><span>Consultar precio →</span></div>
-      </button>
     </div>
   </div>
 </section>
@@ -1173,7 +1235,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
 
   document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
     a.addEventListener('click', () => {
-      if (typeof fbq === 'function') fbq('track', 'Lead');
+      if (typeof fbq === 'function') fbq('track', 'Lead', { lead_source: 'whatsapp_directo' });
     });
   });
 
@@ -1246,7 +1308,17 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       'Info adicional: ' + (quoteState.extra.length ? quoteState.extra.join(', ') : 'Ninguna')
     ];
     const text = encodeURIComponent(lines.join('\n'));
-    if (typeof fbq === 'function') fbq('track', 'Lead');
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {
+        lead_source: 'formulario_cotizacion',
+        perfil: quoteState.perfil,
+        producto: quoteState.producto,
+        cantidad: quoteState.cantidad,
+        extras: quoteState.extra.length ? quoteState.extra.join(', ') : 'Ninguna',
+        content_name: quoteState.producto,
+        content_category: quoteState.perfil
+      });
+    }
     window.open('https://wa.me/' + QUOTE_NUMBER + '?text=' + text, '_blank', 'noopener');
     closeQuoteModal();
   });
