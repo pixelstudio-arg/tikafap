@@ -259,8 +259,38 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     position:relative;height:100%;max-height:640px;aspect-ratio:4/5;max-width:100%;justify-self:center;
     border-radius:22px;overflow:hidden;background:#e9e4d8;box-shadow:0 18px 44px rgba(10,28,61,.18);
   }
-  .sc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 82%;opacity:0;transition:opacity .45s ease;}
+  .sc-media{cursor:zoom-in;}
+  .sc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;opacity:0;transition:opacity .45s ease;}
   .sc-img.on{opacity:1;}
+  .sc-blur{display:none;}
+  .sc-arr,.sc-zoom,.sc-pos{position:absolute;z-index:3;}
+  .sc-arr{
+    top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:none;
+    background:rgba(255,255,255,.9);color:var(--navy-dark);font-size:24px;line-height:1;cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;transition:background .2s ease, color .2s ease;
+  }
+  .sc-arr:hover{background:var(--blue);color:#fff;}
+  .sc-arr.prev{left:10px;}
+  .sc-arr.next{right:10px;}
+  .sc-zoom{
+    bottom:12px;right:12px;border:none;background:rgba(10,28,61,.78);color:#fff;font-size:12.5px;font-weight:700;
+    padding:7px 13px;border-radius:50px;cursor:pointer;display:flex;align-items:center;gap:6px;backdrop-filter:blur(4px);
+  }
+  .sc-zoom:hover{background:var(--blue);}
+  .sc-pos{left:50%;transform:translateX(-50%);bottom:18px;background:rgba(10,28,61,.78);color:#fff;font-size:12px;font-weight:700;padding:4px 11px;border-radius:50px;}
+  .modal-overlay.lb{background:rgba(5,12,28,.96);z-index:340;padding:0;}
+  .lb-box{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:56px 12px 46px;}
+  .lb-box img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;user-select:none;}
+  .lb-box .modal-close{top:14px;right:14px;background:rgba(255,255,255,.16);color:#fff;}
+  .lb-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:none;
+    background:rgba(255,255,255,.18);color:#fff;font-size:30px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  }
+  .lb-arrow:hover{background:var(--blue);}
+  .lb-prev{left:12px;}
+  .lb-next{right:12px;}
+  .lb-count{position:absolute;bottom:14px;left:0;right:0;text-align:center;color:#fff;font-size:14px;font-weight:700;}
+  .lb-cap{position:absolute;top:22px;left:16px;right:70px;color:#fff;font-size:14px;font-weight:700;text-align:left;}
   .sc-badge{
     position:absolute;top:14px;left:14px;z-index:2;background:#e0393f;color:#fff;font-size:11px;font-weight:800;
     padding:5px 13px;border-radius:20px;letter-spacing:.3px;text-transform:uppercase;
@@ -505,6 +535,13 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .offer-perks li i{font-style:normal;font-size:20px;flex-shrink:0;}
   .offer-perks li strong{color:#fff;}
   .offer-fine{font-size:11.5px;color:#9fb6d3;margin-bottom:2px;}
+  .offer-points{margin:16px 0 8px;display:flex;flex-direction:column;gap:6px;text-align:left;font-size:13px;color:#d6e3f3;}
+  .offer-points li::first-letter{color:#7fe3a6;font-weight:900;}
+  #shipOverlay{z-index:330;}
+  .ship-card h3 em{font-size:1.2em;}
+  .ship-card .offer-perks{margin-top:4px;}
+  .ship-card .offer-cta{margin-top:10px;animation:none;background:var(--blue);box-shadow:0 10px 26px rgba(47,111,209,.5);}
+  .ship-card .offer-cta:hover{background:var(--blue-dark);}
   .offer-skip{background:none;border:none;color:#9fb6d3;font-size:13px;text-decoration:underline;cursor:pointer;padding:8px;}
   .offer-skip:hover{color:#fff;}
   .offer-pill{
@@ -555,18 +592,29 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     .sc-count{display:none;}
     .sc-arrow{width:36px;height:36px;font-size:20px;}
     .sc-panel{display:flex;flex-direction:column;gap:12px;align-items:stretch;justify-content:flex-start;}
-    .sc-media{aspect-ratio:auto;height:28svh;height:28vh;height:28svh;max-height:none;width:100%;border-radius:18px;flex:0 0 auto;}
-    .sc-thumbs button{width:38px;height:38px;}
+    .sc-media{aspect-ratio:auto;height:31svh;height:31vh;height:31svh;max-height:none;width:100%;border-radius:18px;flex:0 0 auto;background:#0a1c3d;}
+    .sc-img{object-fit:contain;object-position:50% 50% !important;}
+    .sc-blur{
+      display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
+      filter:blur(20px) brightness(.85);transform:scale(1.2);transition:opacity .45s ease;
+    }
+    .sc-blur.on{opacity:1;}
+    .sc-thumbs{display:none;}
+    .sc-arr{width:34px;height:34px;font-size:20px;}
+    .sc-zoom{padding:6px 11px;font-size:12px;}
+    .lb-arrow{width:42px;height:42px;font-size:26px;}
+    .product-tag{display:none;}
     .sc-info{gap:10px;max-width:none;min-height:0;overflow:hidden;}
     .sc-info h3{font-size:24px;}
-    .sc-desc{font-size:14px;flex-shrink:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+    .sc-desc{font-size:13.5px;flex-shrink:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
     .sc-feats{display:none;}
     .sc-tiers,.sc-consult,.sc-actions,.product-tag,.sc-info h3{flex-shrink:0;}
     .sc-tier{padding:11px 6px 9px;}
     .sc-tier span{font-size:11px;}
     .sc-consult{padding:9px 12px;font-size:12.5px;}
     .sc-consult strong{font-size:14.5px;}
-    .sc-note{font-size:12px;}
+    .sc-note{font-size:12px;padding-right:56px;}
+    .sc-extra{display:none;}
     .sc-actions .btn{width:100%;padding:13px 20px;}
   }
   @media(max-width:560px){
@@ -778,8 +826,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$26.250</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$25.500</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Apilable">📲 Cotizar este producto</button></div>
-          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. Precios por unidad en pesos, sujetos a variación.</p>
+          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Apilable">📲 Cotizar este producto</button></div>
+          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
 
@@ -799,8 +847,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$27.500</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$26.500</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Api Tap">📲 Cotizar este producto</button></div>
-          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. Precios por unidad en pesos, sujetos a variación.</p>
+          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Api Tap">📲 Cotizar este producto</button></div>
+          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
 
@@ -821,8 +869,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$29.500</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$28.500</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Salomé">📲 Cotizar este producto</button></div>
-          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. Precios por unidad en pesos, sujetos a variación.</p>
+          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Salomé">📲 Cotizar este producto</button></div>
+          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
 
@@ -842,8 +890,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$41.000</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$39.000</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Class Premium">📲 Cotizar este producto</button></div>
-          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. Precios por unidad en pesos, sujetos a variación.</p>
+          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Class Premium">📲 Cotizar este producto</button></div>
+          <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
 
@@ -1026,7 +1074,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
 
 <button type="button" class="wa-float" data-quote-trigger aria-label="Cotizar por WhatsApp">💬</button>
 
-<button type="button" class="offer-pill" id="offerPill" aria-label="Ver mi beneficio de 10% de descuento">🎁 10% OFF + envío · <b id="pillTimer">48:00:00</b></button>
+<button type="button" class="offer-pill" id="offerPill" aria-label="Ver mi beneficio de 10% de descuento">🎁 10% OFF · <b id="pillTimer">48:00:00</b></button>
 
 <!-- MODAL DE COTIZACION -->
 <div class="modal-overlay" id="quoteOverlay">
@@ -1037,8 +1085,13 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <p class="quote-scope">📦 Venta mayorista a todo el país · 🏠 Venta particular (minorista) solo en Córdoba Capital</p>
 
     <div class="promo-box" id="promoBox" hidden>
-      <div class="promo-text"><strong>🎁 Tu beneficio: 10% OFF + envío bonificado</strong><span>Envío gratis en Córdoba Capital (dentro de Circunvalación) · 30% OFF en envío al interior · Código <b>TIKA10</b> · vence en <b id="promoLeft">48:00:00</b></span></div>
+      <div class="promo-text"><strong>🎁 Tu beneficio: 10% OFF en tu compra</strong><span>Código <b>TIKA10</b> · vence en <b id="promoLeft">48:00:00</b></span></div>
       <button type="button" class="chip promo-chip" id="promoChip">Aplicar a mi consulta</button>
+    </div>
+
+    <div class="promo-box" id="shipBox" hidden>
+      <div class="promo-text"><strong>🚚 Beneficio de envío para tus sillas</strong><span>Envío gratis en Córdoba Capital (dentro del anillo de Circunvalación) · 30% OFF en el envío al interior</span></div>
+      <button type="button" class="chip promo-chip" id="shipChip">Aplicar a mi consulta</button>
     </div>
 
     <div class="quote-group">
@@ -1107,7 +1160,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   <div class="offer-card" role="dialog" aria-modal="true" aria-labelledby="offerTitle">
     <button type="button" class="modal-close" id="offerClose" aria-label="Cerrar">✕</button>
     <span class="offer-kicker"><span class="offer-gift">🎁</span> Beneficio exclusivo para vos</span>
-    <h3 id="offerTitle"><em>10% OFF</em><small>+ beneficios de envío</small></h3>
+    <h3 id="offerTitle"><em>10% OFF</em> en tu compra</h3>
     <p class="offer-sub">Gracias por visitar TIKAFAP. Activá tu código ahora y ahorrá en sillas, mesas, banquetas y combos <strong>directo de fábrica</strong>.</p>
     <div class="offer-coupon">
       <span>Tu código</span>
@@ -1116,13 +1169,41 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     </div>
     <div class="offer-timer"><span>⏳ Tu beneficio vence en</span> <b id="offerTimer">48:00:00</b></div>
     <button type="button" class="btn btn-primary offer-cta" id="offerCta">🎟️ Quiero mi 10% de descuento</button>
+    <ul class="offer-points">
+      <li>✔ Se suma automáticamente a tu consulta por WhatsApp</li>
+      <li>✔ Mayoristas de todo el país y particulares de Córdoba Capital</li>
+      <li>✔ Fabricación propia · 2 años de garantía</li>
+    </ul>
+    <button type="button" class="offer-skip" id="offerSkip">Ahora no, gracias</button>
+  </div>
+</div>
+
+<!-- BENEFICIO DE ENVIO (al tocar un boton de un modelo de silla) -->
+<div class="modal-overlay" id="shipOverlay">
+  <div class="offer-card ship-card" role="dialog" aria-modal="true" aria-labelledby="shipTitle">
+    <button type="button" class="modal-close" id="shipClose" aria-label="Cerrar">✕</button>
+    <span class="offer-kicker"><span class="offer-gift">🚚</span> Beneficio de envío</span>
+    <h3 id="shipTitle"><em>Envío bonificado</em> en tus sillas</h3>
+    <p class="offer-sub">Elegiste un modelo de silla: activá tu beneficio de envío y cotizá con la mejor condición.</p>
     <ul class="offer-perks">
-      <li><i>🏷️</i><span><strong>10% OFF</strong> en tu compra</span></li>
       <li><i>🚚</i><span><strong>Envío GRATIS</strong> en Córdoba Capital, dentro del anillo de Circunvalación</span></li>
       <li><i>📦</i><span><strong>30% OFF en el envío</strong> al interior</span></li>
     </ul>
-    <p class="offer-fine">✔ Se suma automáticamente a tu consulta por WhatsApp · Fabricación propia · 2 años de garantía</p>
-    <button type="button" class="offer-skip" id="offerSkip">Ahora no, gracias</button>
+    <button type="button" class="btn btn-primary offer-cta" id="shipCta">🚚 Activar beneficio y cotizar</button>
+    <p class="offer-fine">Se suma automáticamente a tu consulta por WhatsApp.</p>
+    <button type="button" class="offer-skip" id="shipSkip">Seguir sin el beneficio</button>
+  </div>
+</div>
+
+<!-- VISOR DE FOTOS AMPLIADAS -->
+<div class="modal-overlay lb" id="imgOverlay">
+  <div class="lb-box" role="dialog" aria-modal="true" aria-label="Fotos del modelo">
+    <button type="button" class="modal-close" id="lbClose" aria-label="Cerrar fotos">✕</button>
+    <div class="lb-cap" id="lbCap"></div>
+    <button type="button" class="lb-arrow lb-prev" id="lbPrev" aria-label="Foto anterior">‹</button>
+    <img id="lbImg" alt="">
+    <button type="button" class="lb-arrow lb-next" id="lbNext" aria-label="Foto siguiente">›</button>
+    <div class="lb-count" id="lbCount"></div>
   </div>
 </div>
 
@@ -1252,19 +1333,100 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     });
   });
   $$('.sc-arrow', sc).forEach(b => b.addEventListener('click', () => goTo(cur + parseInt(b.dataset.dir, 10))));
-  $$('.sc-thumbs', sc).forEach(box => {
-    const imgs = $$('.sc-img', box.parentElement);
-    $$('button', box).forEach((btn, k) => btn.addEventListener('click', () => {
-      $$('button', box).forEach(x => x.classList.toggle('on', x === btn));
-      imgs.forEach((im, j) => im.classList.toggle('on', j === k));
-    }));
+  /* ---- Galería de fotos por modelo: flechas, miniaturas, swipe y ampliar ---- */
+  const galleries = new Map();
+  const imgOverlay = $('#imgOverlay'), lbImg = $('#lbImg'), lbCount = $('#lbCount'), lbCap = $('#lbCap');
+  let lbG = null, lbI = 0;
+  panels.forEach(panel => {
+    const media = $('.sc-media', panel);
+    const imgs = $$('.sc-img', media);
+    const thumbs = $$('.sc-thumbs button', media);
+    const blurs = imgs.map(im => {
+      const b = document.createElement('img');
+      b.className = 'sc-blur'; b.alt = ''; b.src = im.getAttribute('src'); b.setAttribute('aria-hidden', 'true');
+      media.insertBefore(b, media.firstChild);
+      return b;
+    });
+    const multi = imgs.length > 1;
+    const pos = document.createElement('span');
+    pos.className = 'sc-pos';
+    const zoom = document.createElement('button');
+    zoom.type = 'button'; zoom.className = 'sc-zoom'; zoom.setAttribute('aria-label', 'Ampliar foto'); zoom.textContent = '🔍 Ampliar';
+    media.appendChild(zoom);
+    if (multi) media.appendChild(pos);
+    const g = { media: media, imgs: imgs, i: 0, title: $('h3', panel).textContent };
+    g.show = k => {
+      g.i = k;
+      imgs.forEach((im, j) => { im.classList.toggle('on', j === k); blurs[j].classList.toggle('on', j === k); });
+      thumbs.forEach((t, j) => t.classList.toggle('on', j === k));
+      pos.textContent = (k + 1) + ' / ' + imgs.length;
+    };
+    g.step = d => g.show((g.i + d + imgs.length) % imgs.length);
+    if (multi){
+      ['prev', 'next'].forEach(side => {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = 'sc-arr ' + side;
+        b.setAttribute('aria-label', side === 'prev' ? 'Foto anterior' : 'Foto siguiente');
+        b.textContent = side === 'prev' ? '‹' : '›';
+        b.addEventListener('click', () => g.step(side === 'prev' ? -1 : 1));
+        media.appendChild(b);
+      });
+    }
+    thumbs.forEach((t, k) => t.addEventListener('click', () => g.show(k)));
+    media.addEventListener('click', e => { if (!e.target.closest('.sc-arr, .sc-thumbs')) openLb(g); });
+    g.show(0);
+    galleries.set(media, g);
   });
-  let tx = 0, ty = 0;
+
+  function lbRender(){
+    const im = lbG.imgs[lbI], n = lbG.imgs.length;
+    lbImg.src = im.getAttribute('src');
+    lbImg.alt = im.alt;
+    lbCount.textContent = n > 1 ? (lbI + 1) + ' / ' + n : '';
+    lbCap.textContent = lbG.title;
+    $('#lbPrev').style.display = $('#lbNext').style.display = n > 1 ? '' : 'none';
+  }
+  function openLb(g){
+    lbG = g; lbI = g.i; lbRender();
+    lastFocus = document.activeElement;
+    imgOverlay.classList.add('open');
+    lockPage(true);
+    $('#lbClose').focus({ preventScroll: true });
+  }
+  function closeLb(){
+    imgOverlay.classList.remove('open');
+    lockPage(false);
+    lbG.show(lbI);
+    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+  }
+  function lbStep(d){ lbI = (lbI + d + lbG.imgs.length) % lbG.imgs.length; lbRender(); }
+  $('#lbClose').addEventListener('click', closeLb);
+  $('#lbPrev').addEventListener('click', () => lbStep(-1));
+  $('#lbNext').addEventListener('click', () => lbStep(1));
+  imgOverlay.addEventListener('click', e => { if (e.target === imgOverlay || e.target.classList.contains('lb-box')) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!imgOverlay.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') lbStep(-1);
+    else if (e.key === 'ArrowRight') lbStep(1);
+  });
+  let lx = 0, ly = 0;
+  $('.lb-box', imgOverlay).addEventListener('touchstart', e => { lx = e.touches[0].clientX; ly = e.touches[0].clientY; }, { passive: true });
+  $('.lb-box', imgOverlay).addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - lx, dy = e.changedTouches[0].clientY - ly;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) lbStep(dx < 0 ? 1 : -1);
+  }, { passive: true });
+
+  let tx = 0, ty = 0, tTarget = null;
   const panelsBox = $('.sc-panels', sc);
-  panelsBox.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  panelsBox.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; tTarget = e.target; }, { passive: true });
   panelsBox.addEventListener('touchend', e => {
     const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) goTo(cur + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5){
+      const m = tTarget && tTarget.closest ? tTarget.closest('.sc-media') : null;
+      const g = m && galleries.get(m);
+      if (g && g.imgs.length > 1) g.step(dx < 0 ? 1 : -1);
+      else goTo(cur + (dx < 0 ? 1 : -1));
+    }
   }, { passive: true });
 
   /* ---- Scroll unificado ---- */
@@ -1298,6 +1460,19 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     const m = Math.floor(s / 60); s -= m * 60;
     return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
+  const SHIP_TEXT = 'Envío gratis en Córdoba Capital (dentro de Circunvalación) · 30% OFF en el envío al interior';
+  let ship = { seen: false, on: false };
+  try { ship = JSON.parse(sessionStorage.getItem('tk_ship')) || ship; } catch (e) {}
+  function saveShip(){ try { sessionStorage.setItem('tk_ship', JSON.stringify(ship)); } catch (e) {} }
+  const shipBox = $('#shipBox'), shipChip = $('#shipChip');
+  function syncShip(){
+    shipBox.hidden = !ship.seen;
+    if (ship.seen) shipChip.textContent = shipChip.classList.contains('active') ? '✓ Aplicado' : 'Aplicar a mi consulta';
+  }
+  shipChip.addEventListener('click', () => {
+    shipChip.classList.toggle('active');
+    ship.on = shipChip.classList.contains('active'); saveShip(); syncShip();
+  });
   function fmtEnd(){
     return new Date(offerEnd()).toLocaleString('es-AR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false });
   }
@@ -1336,6 +1511,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     comment.value = '';
     promoChip.classList.toggle('active', offerActive());
     syncPromo();
+    shipChip.classList.toggle('active', ship.on);
+    syncShip();
     if (prefill.perfil){ const c = $('.chip-group[data-field="perfil"] .chip[data-value="' + prefill.perfil + '"]', overlay); if (c) c.classList.add('active'); }
     if (prefill.producto){ const c = $('.chip-group[data-field="producto"] .chip[data-value="' + prefill.producto + '"]', overlay); if (c) c.classList.add('active'); }
     syncHomeNote();
@@ -1393,10 +1570,9 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     ];
     if (note) lines.push('Comentarios: ' + note);
     const withPromo = offerActive() && promoChip.classList.contains('active');
-    if (withPromo){
-      lines.push('🎟️ Código de descuento: ' + OFFER.code + ' (válido hasta ' + fmtEnd() + ')');
-      lines.push('Beneficios: ' + OFFER.pct + '% OFF en la compra · Envío gratis en Córdoba Capital (dentro de Circunvalación) · 30% OFF en el envío al interior');
-    }
+    if (withPromo) lines.push('🎟️ Código de descuento: ' + OFFER.code + ' (' + OFFER.pct + '% OFF, válido hasta ' + fmtEnd() + ')');
+    const withShip = ship.seen && shipChip.classList.contains('active');
+    if (withShip) lines.push('🚚 Beneficio de envío: ' + SHIP_TEXT);
     const text = encodeURIComponent(lines.join('\n'));
     if (typeof fbq === 'function') {
       const lead = {
@@ -1409,6 +1585,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
         content_category: quoteState.perfil
       };
       if (withPromo) lead.descuento = OFFER.code;
+      if (withShip) lead.beneficio_envio = 'activado';
       fbq('track', 'Lead', lead);
     }
     window.open('https://wa.me/' + QUOTE_NUMBER + '?text=' + text, '_blank', 'noopener');
@@ -1443,15 +1620,40 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
 
   document.addEventListener('keydown', e => {
     if (e.key !== 'Escape') return;
-    if (vOverlay.classList.contains('open')) closeVideo();
+    if (imgOverlay.classList.contains('open')) closeLb();
+    else if (vOverlay.classList.contains('open')) closeVideo();
+    else if (shipOverlay.classList.contains('open')) closeShip(false);
     else if (overlay.classList.contains('open')) closeQuoteModal();
     else if (offerOverlay.classList.contains('open')) closeOffer(false);
   });
 
+  /* ---- Beneficio de envío: se activa al tocar un botón de un modelo de silla ---- */
+  const shipOverlay = $('#shipOverlay');
+  let pendingPrefill = null;
+  function showShip(prefill){
+    pendingPrefill = prefill;
+    lastFocus = document.activeElement;
+    shipOverlay.classList.add('open');
+    lockPage(true);
+    $('#shipCta').focus({ preventScroll: true });
+    track('EnvioBeneficioMostrado');
+  }
+  function closeShip(accepted){
+    shipOverlay.classList.remove('open');
+    lockPage(false);
+    ship.seen = true; ship.on = !!accepted; saveShip();
+    if (accepted) track('EnvioBeneficioActivado');
+    openQuoteModal(pendingPrefill || {});
+  }
+  $('#shipCta').addEventListener('click', () => closeShip(true));
+  $('#shipSkip').addEventListener('click', () => closeShip(false));
+  $('#shipClose').addEventListener('click', () => closeShip(false));
+  shipOverlay.addEventListener('click', e => { if (e.target === shipOverlay) closeShip(false); });
+
   /* ---- Cartel de descuento: a los 60 segundos ---- */
   const offerOverlay = $('#offerOverlay');
   const pill = $('#offerPill');
-  function anyModalOpen(){ return overlay.classList.contains('open') || vOverlay.classList.contains('open') || offerOverlay.classList.contains('open'); }
+  function anyModalOpen(){ return [overlay, vOverlay, offerOverlay, shipOverlay, imgOverlay].some(o => o.classList.contains('open')); }
   function track(name){ if (typeof fbq === 'function') fbq('trackCustom', name, { code: OFFER.code }); }
   function showOffer(){
     $('#offerTimer').textContent = fmtLeft();
@@ -1520,7 +1722,9 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     const q = e.target.closest('[data-quote-trigger]');
     if (q){
       e.preventDefault();
-      openQuoteModal({ producto: q.dataset.quoteProduct || null, perfil: q.dataset.quotePerfil || null });
+      const prefill = { producto: q.dataset.quoteProduct || null, perfil: q.dataset.quotePerfil || null };
+      if (q.hasAttribute('data-ship-trigger') && !ship.seen) showShip(prefill);
+      else openQuoteModal(prefill);
       return;
     }
     const v = e.target.closest('[data-video]');
