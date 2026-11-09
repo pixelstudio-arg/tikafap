@@ -474,7 +474,8 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     background:linear-gradient(180deg,#fff 10%,#9cc6ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
     text-shadow:none;
   }
-  .offer-sub{font-size:15px;color:#d6e3f3;margin-bottom:18px;}
+  .offer-card h3 small{display:block;font-size:.52em;font-weight:800;margin-top:8px;color:#fff;}
+  .offer-sub{font-size:14.5px;color:#d6e3f3;margin-bottom:14px;}
   .offer-sub strong{color:#fff;}
   .offer-coupon{
     display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;
@@ -496,8 +497,14 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   .offer-cta{width:100%;font-size:16.5px;padding:17px 20px;background:#e0393f;box-shadow:0 10px 26px rgba(224,57,63,.45);animation:ctaPulse 2.2s infinite;}
   .offer-cta:hover{background:#c0272d;}
   @keyframes ctaPulse{0%,100%{box-shadow:0 10px 26px rgba(224,57,63,.45),0 0 0 0 rgba(224,57,63,.5);}60%{box-shadow:0 10px 26px rgba(224,57,63,.45),0 0 0 14px rgba(224,57,63,0);}}
-  .offer-points{margin:16px 0 8px;display:flex;flex-direction:column;gap:6px;text-align:left;font-size:13px;color:#d6e3f3;}
-  .offer-points li::first-letter{color:#7fe3a6;font-weight:900;}
+  .offer-perks{margin:16px 0 8px;display:flex;flex-direction:column;gap:8px;text-align:left;}
+  .offer-perks li{
+    display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);
+    border-radius:12px;padding:9px 12px;font-size:13.5px;color:#d6e3f3;line-height:1.3;
+  }
+  .offer-perks li i{font-style:normal;font-size:20px;flex-shrink:0;}
+  .offer-perks li strong{color:#fff;}
+  .offer-fine{font-size:11.5px;color:#9fb6d3;margin-bottom:2px;}
   .offer-skip{background:none;border:none;color:#9fb6d3;font-size:13px;text-decoration:underline;cursor:pointer;padding:8px;}
   .offer-skip:hover{color:#fff;}
   .offer-pill{
@@ -1019,7 +1026,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
 
 <button type="button" class="wa-float" data-quote-trigger aria-label="Cotizar por WhatsApp">💬</button>
 
-<button type="button" class="offer-pill" id="offerPill" aria-label="Ver mi beneficio de 10% de descuento">🎁 10% OFF · <b id="pillTimer">48:00:00</b></button>
+<button type="button" class="offer-pill" id="offerPill" aria-label="Ver mi beneficio de 10% de descuento">🎁 10% OFF + envío · <b id="pillTimer">48:00:00</b></button>
 
 <!-- MODAL DE COTIZACION -->
 <div class="modal-overlay" id="quoteOverlay">
@@ -1030,7 +1037,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <p class="quote-scope">📦 Venta mayorista a todo el país · 🏠 Venta particular (minorista) solo en Córdoba Capital</p>
 
     <div class="promo-box" id="promoBox" hidden>
-      <div class="promo-text"><strong>🎁 Tu beneficio: 10% OFF en tu compra</strong><span>Código <b>TIKA10</b> · vence en <b id="promoLeft">48:00:00</b></span></div>
+      <div class="promo-text"><strong>🎁 Tu beneficio: 10% OFF + envío bonificado</strong><span>Envío gratis en Córdoba Capital (dentro de Circunvalación) · 30% OFF en envío al interior · Código <b>TIKA10</b> · vence en <b id="promoLeft">48:00:00</b></span></div>
       <button type="button" class="chip promo-chip" id="promoChip">Aplicar a mi consulta</button>
     </div>
 
@@ -1095,12 +1102,12 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- CARTEL DE DESCUENTO (a los 30 segundos) -->
+<!-- CARTEL DE DESCUENTO (a los 60 segundos) -->
 <div class="modal-overlay" id="offerOverlay">
   <div class="offer-card" role="dialog" aria-modal="true" aria-labelledby="offerTitle">
     <button type="button" class="modal-close" id="offerClose" aria-label="Cerrar">✕</button>
     <span class="offer-kicker"><span class="offer-gift">🎁</span> Beneficio exclusivo para vos</span>
-    <h3 id="offerTitle"><em>10% OFF</em> en tu compra</h3>
+    <h3 id="offerTitle"><em>10% OFF</em><small>+ beneficios de envío</small></h3>
     <p class="offer-sub">Gracias por visitar TIKAFAP. Activá tu código ahora y ahorrá en sillas, mesas, banquetas y combos <strong>directo de fábrica</strong>.</p>
     <div class="offer-coupon">
       <span>Tu código</span>
@@ -1109,11 +1116,12 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     </div>
     <div class="offer-timer"><span>⏳ Tu beneficio vence en</span> <b id="offerTimer">48:00:00</b></div>
     <button type="button" class="btn btn-primary offer-cta" id="offerCta">🎟️ Quiero mi 10% de descuento</button>
-    <ul class="offer-points">
-      <li>✔ Se suma automáticamente a tu consulta por WhatsApp</li>
-      <li>✔ Mayoristas de todo el país y particulares de Córdoba Capital</li>
-      <li>✔ Fabricación propia · 2 años de garantía</li>
+    <ul class="offer-perks">
+      <li><i>🏷️</i><span><strong>10% OFF</strong> en tu compra</span></li>
+      <li><i>🚚</i><span><strong>Envío GRATIS</strong> en Córdoba Capital, dentro del anillo de Circunvalación</span></li>
+      <li><i>📦</i><span><strong>30% OFF en el envío</strong> al interior</span></li>
     </ul>
+    <p class="offer-fine">✔ Se suma automáticamente a tu consulta por WhatsApp · Fabricación propia · 2 años de garantía</p>
     <button type="button" class="offer-skip" id="offerSkip">Ahora no, gracias</button>
   </div>
 </div>
@@ -1278,7 +1286,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
   onScroll();
 
   /* ---- Descuento: estado compartido (cartel, pastilla y formulario) ---- */
-  const OFFER = { code: 'TIKA10', pct: 10, ms: 48 * 3600 * 1000, delay: 30000, key: 'tk_offer_v1' };
+  const OFFER = { code: 'TIKA10', pct: 10, ms: 48 * 3600 * 1000, delay: 60000, key: 'tk_offer_v1' };
   let offer = null;
   try { offer = JSON.parse(localStorage.getItem(OFFER.key)); } catch (e) { offer = null; }
   function saveOffer(){ try { localStorage.setItem(OFFER.key, JSON.stringify(offer)); } catch (e) {} }
@@ -1385,7 +1393,10 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     ];
     if (note) lines.push('Comentarios: ' + note);
     const withPromo = offerActive() && promoChip.classList.contains('active');
-    if (withPromo) lines.push('🎟️ Código de descuento: ' + OFFER.code + ' (' + OFFER.pct + '% OFF, válido hasta ' + fmtEnd() + ')');
+    if (withPromo){
+      lines.push('🎟️ Código de descuento: ' + OFFER.code + ' (válido hasta ' + fmtEnd() + ')');
+      lines.push('Beneficios: ' + OFFER.pct + '% OFF en la compra · Envío gratis en Córdoba Capital (dentro de Circunvalación) · 30% OFF en el envío al interior');
+    }
     const text = encodeURIComponent(lines.join('\n'));
     if (typeof fbq === 'function') {
       const lead = {
@@ -1437,7 +1448,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     else if (offerOverlay.classList.contains('open')) closeOffer(false);
   });
 
-  /* ---- Cartel de descuento: a los 30 segundos ---- */
+  /* ---- Cartel de descuento: a los 60 segundos ---- */
   const offerOverlay = $('#offerOverlay');
   const pill = $('#offerPill');
   function anyModalOpen(){ return overlay.classList.contains('open') || vOverlay.classList.contains('open') || offerOverlay.classList.contains('open'); }
