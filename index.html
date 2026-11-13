@@ -28,11 +28,11 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1514780469915961');
+fbq('init', '1876903703763166');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
@@ -1596,7 +1596,9 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
       };
       if (withPromo) lead.descuento = OFFER.code;
       if (withShip) lead.beneficio_envio = 'activado';
-      fbq('track', 'Lead', lead);
+      const evId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+      fbq('track', 'Lead', lead, { eventID: evId });
+      fbq('track', 'Contact', { content_name: lead.content_name, content_category: lead.content_category, canal: 'whatsapp' }, { eventID: 'ct' + evId });
     }
     window.open('https://wa.me/' + QUOTE_NUMBER + '?text=' + text, '_blank', 'noopener');
     closeQuoteModal();
@@ -1740,6 +1742,86 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     const v = e.target.closest('[data-video]');
     if (v){ e.preventDefault(); openVideo(v.dataset.video, v.dataset.title); }
   });
+})();
+</script>
+
+
+<!-- ===== Meta Pixel: eventos de seguimiento (TIKAFAP) ===== -->
+<script>
+(function(){
+  function px(type, name, params){ try { if (typeof fbq === 'function') fbq(type, name, params || {}); } catch (e) {} }
+  function txt(el){ return el ? el.textContent.replace(/\s+/g, ' ').trim().slice(0, 100) : ''; }
+  function onOpen(el, cb){
+    if (!el) return;
+    let was = el.classList.contains('open');
+    new MutationObserver(() => { const now = el.classList.contains('open'); if (now && !was) cb(); was = now; })
+      .observe(el, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  /* ViewContent: cada modelo del catálogo que se muestra (una vez por modelo) */
+  const seen = {};
+  function viewProduct(panel){
+    const name = txt(panel && panel.querySelector('h3'));
+    if (!name || seen[name]) return;
+    seen[name] = true;
+    px('track', 'ViewContent', { content_name: name, content_type: 'product', content_category: 'Catalogo' });
+  }
+  const panels = document.querySelectorAll('.sc-panel');
+  panels.forEach(p => new MutationObserver(() => { if (p.classList.contains('is-active')) viewProduct(p); })
+    .observe(p, { attributes: true, attributeFilter: ['class'] }));
+  const sc = document.getElementById('productos');
+  if (sc && 'IntersectionObserver' in window){
+    const io = new IntersectionObserver(es => es.forEach(en => {
+      if (en.isIntersecting){ viewProduct(document.querySelector('.sc-panel.is-active')); io.disconnect(); }
+    }), { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+    io.observe(sc);
+  }
+
+  /* Origen del clic que abre el cotizador */
+  let origen = 'directo';
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-quote-trigger], #offerCta, #offerPill, #shipCta');
+    if (t) origen = t.dataset.quoteProduct || t.getAttribute('aria-label') || txt(t) || t.id;
+
+    const a = e.target.closest('a[href]');
+    if (a){
+      const h = a.href;
+      if (/maps\.app\.goo\.gl|google\.[a-z.]+\/maps/.test(h)) px('track', 'FindLocation', { content_name: 'Google Maps fábrica' });
+      else if (/instagram\.com/.test(h)) px('trackCustom', 'ClickInstagram', { ubicacion: txt(a) || 'icono' });
+    }
+    const pf = e.target.closest('.profile-card .pf-btn');
+    if (pf) px('trackCustom', 'SeleccionPerfil', { perfil: txt(pf.closest('.profile-card').querySelector('h3')) });
+    const bs = e.target.closest('.bs-card');
+    if (bs) px('trackCustom', 'ClickMasVendido', { content_name: txt(bs.querySelector('h3')) });
+  }, true);
+
+  /* Apertura del cotizador (paso previo al Lead) */
+  onOpen(document.getElementById('quoteOverlay'), () => {
+    px('track', 'InitiateCheckout', { content_name: origen, content_category: 'Cotizador WhatsApp' });
+    origen = 'directo';
+  });
+
+  /* Videos de entregas y fotos ampliadas */
+  onOpen(document.getElementById('vOverlay'), () => px('trackCustom', 'VerVideo', { video: txt(document.getElementById('vTitle')) }));
+  onOpen(document.getElementById('imgOverlay'), () => px('trackCustom', 'AmpliarFoto', { content_name: txt(document.getElementById('lbCap')) }));
+
+  /* Profundidad de scroll */
+  const marks = [25, 50, 75, 90], hit = {};
+  function onScroll(){
+    const d = document.documentElement, max = d.scrollHeight - window.innerHeight;
+    if (max <= 0) return;
+    const pct = (window.scrollY / max) * 100;
+    marks.forEach(m => { if (pct >= m && !hit[m]){ hit[m] = true; px('trackCustom', 'Scroll' + m, { porcentaje: m }); } });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Tiempo activo en la página (solo cuenta con la pestaña visible) */
+  const tMarks = [30, 60, 120]; let secs = 0;
+  setInterval(() => {
+    if (document.visibilityState !== 'visible') return;
+    secs++;
+    if (tMarks.indexOf(secs) >= 0) px('trackCustom', 'Tiempo' + secs + 's', { segundos: secs });
+  }, 1000);
 })();
 </script>
 
