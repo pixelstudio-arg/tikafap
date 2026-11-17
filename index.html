@@ -1100,7 +1100,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     </div>
 
     <div class="promo-box" id="shipBox" hidden>
-      <div class="promo-text"><strong>🚚 Beneficio de envío para tus sillas</strong><span>Envío gratis en Córdoba Capital (dentro del anillo de Circunvalación) · 30% OFF en el envío al interior</span></div>
+      <div class="promo-text"><strong>🚚 Beneficio de envío para tus sillas</strong><span>15% OFF en el envío con la compra de +20 sillas en Córdoba Capital · 30% OFF en el envío al interior</span></div>
       <button type="button" class="chip promo-chip" id="shipChip">Aplicar a mi consulta</button>
     </div>
 
@@ -1196,7 +1196,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     <h3 id="shipTitle"><em>Envío bonificado</em> en tus sillas</h3>
     <p class="offer-sub">Elegiste un modelo de silla: activá tu beneficio de envío y cotizá con la mejor condición.</p>
     <ul class="offer-perks">
-      <li><i>🚚</i><span><strong>Envío GRATIS</strong> en Córdoba Capital, dentro del anillo de Circunvalación</span></li>
+      <li><i>🚚</i><span><strong>15% OFF en el envío</strong> con la compra de +20 sillas en Córdoba Capital</span></li>
       <li><i>📦</i><span><strong>30% OFF en el envío</strong> al interior</span></li>
     </ul>
     <button type="button" class="btn btn-primary offer-cta" id="shipCta">🚚 Activar beneficio y cotizar</button>
@@ -1470,7 +1470,7 @@ src="https://www.facebook.com/tr?id=1514780469915961&ev=PageView&noscript=1"
     const m = Math.floor(s / 60); s -= m * 60;
     return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
-  const SHIP_TEXT = 'Envío gratis en Córdoba Capital (dentro de Circunvalación) · 30% OFF en el envío al interior';
+  const SHIP_TEXT = '15% OFF en el envío con la compra de +20 sillas en Córdoba Capital · 30% OFF en el envío al interior';
   let ship = { seen: false, on: false };
   try { ship = JSON.parse(sessionStorage.getItem('tk_ship')) || ship; } catch (e) {}
   function saveShip(){ try { sessionStorage.setItem('tk_ship', JSON.stringify(ship)); } catch (e) {} }
