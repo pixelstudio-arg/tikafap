@@ -320,6 +320,11 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   }
   .sc-info h3{font-size:clamp(26px,3.3vw,40px);color:var(--navy-dark);}
   .sc-desc{font-size:15.5px;color:var(--gray);}
+  .sc-choice{
+    font-size:13.5px;color:var(--navy-dark);background:#eef4fd;border-left:4px solid var(--blue);
+    border-radius:8px;padding:8px 12px;width:fit-content;max-width:100%;
+  }
+  .sc-choice b{color:var(--blue-dark);}
   .sc-feats{display:flex;flex-wrap:wrap;gap:8px;}
   .sc-feats li{font-size:12.5px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);padding:5px 12px;border-radius:50px;}
   .sc-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px;}
@@ -549,7 +554,8 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   .offer-points{margin:16px 0 8px;display:flex;flex-direction:column;gap:6px;text-align:left;font-size:13px;color:#d6e3f3;}
   .offer-points li::first-letter{color:#7fe3a6;font-weight:900;}
   #shipOverlay{z-index:330;}
-  .ship-card h3 em{font-size:1.2em;}
+  .ship-card h3{font-size:clamp(24px,6vw,32px);}
+  .ship-card h3 em{font-size:1.05em;display:block;}
   .ship-card .offer-perks{margin-top:4px;}
   .ship-card .offer-cta{margin-top:10px;animation:none;background:var(--blue);box-shadow:0 10px 26px rgba(47,111,209,.5);}
   .ship-card .offer-cta:hover{background:var(--blue-dark);}
@@ -603,7 +609,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     .sc-count{display:none;}
     .sc-arrow{width:36px;height:36px;font-size:20px;}
     .sc-panel{display:flex;flex-direction:column;gap:12px;align-items:stretch;justify-content:flex-start;}
-    .sc-media{aspect-ratio:auto;height:31svh;height:31vh;height:31svh;max-height:none;width:100%;border-radius:18px;flex:0 0 auto;background:#0a1c3d;}
+    .sc-media{aspect-ratio:auto;height:27svh;height:27vh;height:27svh;max-height:none;width:100%;border-radius:18px;flex:0 0 auto;background:#0a1c3d;}
     .sc-img{object-fit:contain;object-position:50% 50% !important;}
     .sc-blur{
       display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;
@@ -619,7 +625,13 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     .sc-info h3{font-size:24px;}
     .sc-desc{font-size:13.5px;flex-shrink:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
     .sc-feats{display:none;}
-    .sc-tiers,.sc-consult,.sc-actions,.product-tag,.sc-info h3{flex-shrink:0;}
+    .sc-tiers,.sc-consult,.sc-actions,.product-tag,.sc-info h3,.sc-choice{flex-shrink:0;}
+    .sc-choice{font-size:12.5px;padding:5px 10px;}
+    .sc-more{display:none;}
+    .sc-panel{gap:10px;}
+    .sc-info{gap:8px;}
+    .sc-actions{margin-top:0;}
+    .sc-actions .btn{padding:11px 20px;}
     .sc-tier{padding:11px 6px 9px;}
     .sc-tier span{font-size:11px;}
     .sc-consult{padding:9px 12px;font-size:12.5px;}
@@ -831,7 +843,8 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <span class="product-tag">Apilable</span>
           <h3>Silla Apilable</h3>
           <p class="sc-desc">Respaldo de caño con líneas simples y asiento tapizado. Fácil de apilar y guardar entre usos.</p>
-          <ul class="sc-feats"><li>Caño reforzado</li><li>Se apila y guarda fácil</li><li>Tapizado a elección</li></ul>
+          <p class="sc-choice">🎨 <b>Color y tapizado a elección</b><span class="sc-more"> dentro de la variedad disponible.</span></p>
+          <ul class="sc-feats"><li>Caño reforzado</li><li>Se apila y guarda fácil</li></ul>
           <div class="sc-tiers">
             <div class="sc-tier"><span>1 unidad</span><strong>$27.000</strong></div>
             <div class="sc-tier"><span>+20 unidades</span><strong>$26.250</strong></div>
@@ -852,6 +865,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <span class="product-tag">Apilable</span>
           <h3>Silla Api Tap</h3>
           <p class="sc-desc">Diseño clásico de respaldo tapizado, ideal para bares y espacios gastronómicos con estilo cálido.</p>
+          <p class="sc-choice">🎨 <b>Color y tapizado a elección</b><span class="sc-more"> dentro de la variedad disponible.</span></p>
           <ul class="sc-feats"><li>Respaldo tapizado</li><li>Ideal gastronomía</li><li>Apilable</li></ul>
           <div class="sc-tiers">
             <div class="sc-tier"><span>1 unidad</span><strong>$28.500</strong></div>
@@ -874,6 +888,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <span class="product-tag">Apilable</span>
           <h3>Silla Salomé</h3>
           <p class="sc-desc">Estructura robusta de caño doble y respaldo tapizado, pensada para uso comercial intensivo.</p>
+          <p class="sc-choice">🎨 <b>Color y tapizado a elección</b><span class="sc-more"> dentro de la variedad disponible.</span></p>
           <ul class="sc-feats"><li>Caño doble reforzado</li><li>Uso comercial intensivo</li><li>Apilable</li></ul>
           <div class="sc-tiers">
             <div class="sc-tier"><span>1 unidad</span><strong>$30.500</strong></div>
@@ -895,6 +910,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <span class="product-tag">Premium</span>
           <h3>Silla Class Premium</h3>
           <p class="sc-desc">Respaldo alto totalmente tapizado, un modelo más elegante para salones y eventos.</p>
+          <p class="sc-choice">🎨 <b>Color y tapizado a elección</b><span class="sc-more"> dentro de la variedad disponible.</span></p>
           <ul class="sc-feats"><li>Respaldo alto tapizado</li><li>Para salones y eventos</li><li>Terminación premium</li></ul>
           <div class="sc-tiers">
             <div class="sc-tier"><span>1 unidad</span><strong>$43.000</strong></div>
@@ -933,6 +949,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <span class="product-tag">Silla + mesa</span>
           <h3>Combos de silla + mesa</h3>
           <p class="sc-desc">Juegos para el hogar o para equipar tu local por completo. Combos de 4, 6 o la cantidad de sillas que necesites, con mesas de 0,80 x 1,40 m o 0,80 x 1,80 m.</p>
+          <p class="sc-choice">🎨 <b>Color y tapizado de las sillas a elección</b><span class="sc-more"> dentro de la variedad disponible.</span></p>
           <ul class="sc-feats"><li>4, 6 o más sillas</li><li>Mesa 0,80 x 1,40 m</li><li>Mesa 0,80 x 1,80 m</li></ul>
           <div class="sc-consult"><strong>Precio según cantidad y medida</strong>Ideal para tu hogar o tu local. Venta particular solo en Córdoba Capital.</div>
           <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Combo silla + mesa">📲 Cotizar este producto</button></div>
@@ -1194,7 +1211,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   <div class="offer-card ship-card" role="dialog" aria-modal="true" aria-labelledby="shipTitle">
     <button type="button" class="modal-close" id="shipClose" aria-label="Cerrar">✕</button>
     <span class="offer-kicker"><span class="offer-gift">🚚</span> Beneficio de envío</span>
-    <h3 id="shipTitle"><em>Envío bonificado</em> en tus sillas</h3>
+    <h3 id="shipTitle"><em>Descuentos en el envío</em> de tus sillas</h3>
     <p class="offer-sub">Elegiste un modelo de silla: activá tu beneficio de envío y cotizá con la mejor condición.</p>
     <ul class="offer-perks">
       <li><i>🚚</i><span><strong>15% OFF en el envío</strong> con la compra de +20 sillas en Córdoba Capital</span></li>
@@ -1471,7 +1488,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     const m = Math.floor(s / 60); s -= m * 60;
     return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
-  const SHIP_TEXT = '15% OFF en el envío con la compra de +20 sillas en Córdoba Capital · 30% OFF en el envío al interior';
+  const SHIP_ITEMS = ['15% OFF en el envío con la compra de +20 sillas en Córdoba Capital', '30% OFF en el envío al interior'];
   let ship = { seen: false, on: false };
   try { ship = JSON.parse(sessionStorage.getItem('tk_ship')) || ship; } catch (e) {}
   function saveShip(){ try { sessionStorage.setItem('tk_ship', JSON.stringify(ship)); } catch (e) {} }
@@ -1572,19 +1589,24 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       extra: picked('extra')
     };
     const note = comment.value.trim();
-    const lines = [
-      'Hola TIKAFAP! Quiero cotizar:',
-      'Perfil: ' + quoteState.perfil,
-      'Productos de interés: ' + quoteState.producto.join(', '),
-      'Cantidad a cotizar: ' + quoteState.cantidad,
-      'Envío / otros: ' + (quoteState.extra.length ? quoteState.extra.join(', ') : 'Ninguno')
-    ];
-    if (note) lines.push('Comentarios: ' + note);
     const withPromo = offerActive() && promoChip.classList.contains('active');
-    if (withPromo) lines.push('🎟️ Código de descuento: ' + OFFER.code + ' (' + OFFER.pct + '% OFF, válido hasta ' + fmtEnd() + ')');
     const withShip = ship.seen && shipChip.classList.contains('active');
-    if (withShip) lines.push('🚚 Beneficio de envío: ' + SHIP_TEXT);
-    const text = encodeURIComponent(lines.join('\n'));
+    const bullets = list => list.map(v => '• ' + v).join('\n');
+    const SI = '✅ *SÍ aplica*', NO = '❌ *NO aplica*';
+    const sections = [
+      '👋 *Hola TIKAFAP!* Quiero cotizar desde la web:',
+      '👤 *PERFIL*\n' + quoteState.perfil,
+      '🪑 *PRODUCTOS DE INTERÉS*\n' + bullets(quoteState.producto),
+      '🔢 *CANTIDAD A COTIZAR*\n' + quoteState.cantidad,
+      '🚚 *ENVÍO Y OTROS*\n' + (quoteState.extra.length ? bullets(quoteState.extra) : 'Sin aclaraciones')
+    ];
+    if (note) sections.push('💬 *COMENTARIOS*\n' + note);
+    sections.push([
+      '🎁 *BENEFICIOS DE LA WEB*',
+      '🏷️ Descuento ' + OFFER.pct + '% OFF: ' + (withPromo ? SI + '\n    Código: *' + OFFER.code + '* (válido hasta ' + fmtEnd() + ')' : NO),
+      '🚚 Descuentos en el envío: ' + (withShip ? SI + '\n' + SHIP_ITEMS.map(v => '    • ' + v).join('\n') : NO)
+    ].join('\n'));
+    const text = encodeURIComponent(sections.join('\n\n'));
     if (typeof fbq === 'function') {
       const lead = {
         lead_source: 'formulario_cotizacion',
