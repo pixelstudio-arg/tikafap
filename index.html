@@ -342,7 +342,30 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   }
   .sc-consult{background:#fff;border:1.5px dashed var(--blue);border-radius:14px;padding:16px 18px;font-size:14.5px;color:var(--navy-dark);}
   .sc-consult strong{display:block;font-size:17px;margin-bottom:2px;}
-  .sc-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:4px;}
+  .sc-tier{transition:box-shadow .2s ease, transform .2s ease;}
+  .sc-tier.on{box-shadow:0 0 0 2.5px var(--blue);transform:translateY(-2px);}
+  .sc-total{font-size:13.5px;color:var(--gray);margin-top:-4px;min-height:20px;}
+  .sc-total b{color:var(--navy-dark);font-size:15.5px;}
+  .sc-actions{display:flex;gap:12px;flex-wrap:nowrap;align-items:center;margin-top:4px;}
+  .sc-actions > .btn{flex:1 1 auto;min-width:0;}
+  .qty{
+    display:inline-flex;align-items:center;flex:0 0 auto;background:#fff;border:1.5px solid var(--line);border-radius:50px;
+    padding:3px;gap:2px;
+  }
+  .qty-b{
+    width:38px;height:38px;border-radius:50%;border:none;background:var(--cream);color:var(--navy-dark);
+    font-size:22px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:background .15s ease, color .15s ease;
+  }
+  .qty-b:hover{background:var(--blue);color:#fff;}
+  .qty-b:active{transform:scale(.94);}
+  .qty-i{
+    width:46px;border:none;background:none;text-align:center;font-family:inherit;font-size:17px;font-weight:800;color:var(--navy-dark);
+    padding:0;-moz-appearance:textfield;appearance:textfield;
+  }
+  .qty-i::-webkit-outer-spin-button,.qty-i::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .qty-i:focus{outline:none;}
+  .qty-u{font-size:11.5px;color:var(--gray);font-weight:700;margin-right:6px;}
   .sc-note{font-size:12.5px;color:var(--gray);margin-top:2px;}
   .sc-note b{color:var(--navy);}
   .sc-hint{font-size:12.5px;color:var(--gray);text-align:center;margin-top:8px;}
@@ -479,6 +502,9 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   .promo-text strong{display:block;font-size:14.5px;color:var(--navy-dark);}
   .promo-text span{font-size:12.5px;color:var(--gray);}
   .promo-text b{color:#c0272d;font-variant-numeric:tabular-nums;}
+  .promo-text em{display:block;font-style:normal;font-size:12px;font-weight:700;margin-top:3px;color:#1e7a46;}
+  .promo-text em.warn{color:#b86a00;}
+  .quote-ok{font-size:13px;font-weight:700;color:#1e7a46;margin-top:8px;}
   .promo-chip.active{background:#e0393f;border-color:#e0393f;}
   .quote-text{
     width:100%;min-height:84px;resize:vertical;border:1.5px solid #e0dcd2;border-radius:14px;
@@ -561,15 +587,23 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   .ship-card .offer-cta:hover{background:var(--blue-dark);}
   .offer-skip{background:none;border:none;color:#9fb6d3;font-size:13px;text-decoration:underline;cursor:pointer;padding:8px;}
   .offer-skip:hover{color:#fff;}
-  .offer-pill{
-    position:fixed;left:16px;bottom:22px;z-index:190;display:none;align-items:center;gap:8px;
-    background:linear-gradient(135deg,#e0393f,#b81f26);color:#fff;border:none;border-radius:50px;padding:11px 18px;
-    font-size:13.5px;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(184,31,38,.45);
+  .offer-top{
+    display:none;align-items:center;gap:6px;flex-shrink:0;
+    background:linear-gradient(135deg,#e0393f,#b81f26);color:#fff;border:none;border-radius:50px;padding:7px 14px;
+    font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;box-shadow:0 6px 18px rgba(184,31,38,.5);
     animation:pillIn .5s var(--ease);
   }
-  .offer-pill.show{display:inline-flex;}
-  .offer-pill b{font-variant-numeric:tabular-nums;background:rgba(0,0,0,.25);border-radius:50px;padding:2px 9px;}
-  @keyframes pillIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+  .offer-top.show{display:inline-flex;}
+  .offer-top b{font-variant-numeric:tabular-nums;background:rgba(0,0,0,.25);border-radius:50px;padding:2px 9px;}
+  .offer-top .ot-short{display:none;}
+  @keyframes pillIn{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:none;}}
+  .toast{
+    position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);z-index:350;max-width:min(92vw,460px);
+    background:var(--navy-dark);color:#fff;font-size:14px;font-weight:600;line-height:1.4;text-align:center;
+    padding:13px 20px;border-radius:14px;box-shadow:0 14px 40px rgba(0,0,0,.4);border:1px solid rgba(127,178,240,.35);
+    opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;
+  }
+  .toast.show{opacity:1;transform:translate(-50%,0);}
 
   /* ---------- Responsive ---------- */
   @media(max-width:900px){
@@ -630,24 +664,31 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     .sc-more{display:none;}
     .sc-panel{gap:10px;}
     .sc-info{gap:8px;}
-    .sc-actions{margin-top:0;}
-    .sc-actions .btn{padding:11px 20px;}
+    .sc-actions{margin-top:0;gap:8px;}
+    .sc-total{display:none;}
+    .qty-b{width:34px;height:34px;font-size:20px;}
+    .qty-i{width:34px;font-size:16px;}
+    .qty-u{margin-right:4px;}
     .sc-tier{padding:11px 6px 9px;}
     .sc-tier span{font-size:11px;}
     .sc-consult{padding:9px 12px;font-size:12.5px;}
     .sc-consult strong{font-size:14.5px;}
     .sc-note{font-size:12px;padding-right:56px;}
     .sc-extra{display:none;}
-    .sc-actions .btn{width:100%;padding:13px 20px;}
+    .sc-actions > .btn{padding:12px 14px;font-size:14px;}
   }
   @media(max-width:560px){
+    .sc-cta-more{display:none;}
     .container{padding:0 18px;}
     .sc-panels{--gut:18px;}
     .wa-float{width:52px;height:52px;font-size:26px;bottom:16px;right:14px;}
     .profile-grid{grid-template-columns:1fr;}
     .profile-card:last-child{width:100%;}
     .offer-card{padding:26px 20px 18px;}
-    .offer-pill{left:12px;bottom:16px;padding:9px 14px;font-size:12.5px;}
+    .offer-top{padding:6px 10px;font-size:11.5px;gap:4px;}
+    .offer-top .ot-full{display:none;}
+    .offer-top .ot-short{display:inline;}
+    .logo{font-size:18px;gap:8px;}
     .bs-card{width:190px;}
     .vcard{width:176px;height:314px;}
     .quote-modal{padding:28px 20px 0;}
@@ -683,6 +724,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       <span class="logo-badge"><img src="img/logo-circular.jpeg" alt="Logo TIKAFAP"></span>
       TIKAFAP
     </a>
+    <button type="button" class="offer-top" id="offerPill" aria-label="Tu 10% de descuento está activo: ver modelos y precios">🎁 <span class="ot-full">10% OFF</span><span class="ot-short">10%</span> · <b id="pillTimer">24:00:00</b></button>
     <nav id="nav">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
@@ -720,8 +762,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
             <div><strong>Venta minorista</strong><span>Solo en Córdoba Capital</span></div>
           </div>
           <div class="hero-ctas hr" data-at="0.68">
-            <button type="button" class="btn btn-primary" data-quote-trigger>📲 Pedir presupuesto mayorista</button>
-            <a class="btn btn-outline" href="#productos">Ver productos</a>
+            <a class="btn btn-primary" href="#productos">🪑 Ver modelos y precios</a>
           </div>
         </div>
       </div>
@@ -850,7 +891,11 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$26.250</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$25.500</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Apilable">📲 Cotizar este producto</button></div>
+          <p class="sc-total" aria-live="polite"></p>
+          <div class="sc-actions">
+            <div class="qty" role="group" aria-label="Cantidad a cotizar"><button type="button" class="qty-b" data-q="-1" aria-label="Quitar una unidad">−</button><input class="qty-i" type="number" inputmode="numeric" min="1" max="9999" value="25" aria-label="Cantidad a cotizar"><span class="qty-u">unid.</span><button type="button" class="qty-b" data-q="1" aria-label="Agregar una unidad">+</button></div>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Apilable">📲 Cotizar<span class="sc-cta-more"> este producto</span></button>
+          </div>
           <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
@@ -872,7 +917,11 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$27.500</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$26.500</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Api Tap">📲 Cotizar este producto</button></div>
+          <p class="sc-total" aria-live="polite"></p>
+          <div class="sc-actions">
+            <div class="qty" role="group" aria-label="Cantidad a cotizar"><button type="button" class="qty-b" data-q="-1" aria-label="Quitar una unidad">−</button><input class="qty-i" type="number" inputmode="numeric" min="1" max="9999" value="25" aria-label="Cantidad a cotizar"><span class="qty-u">unid.</span><button type="button" class="qty-b" data-q="1" aria-label="Agregar una unidad">+</button></div>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Api Tap">📲 Cotizar<span class="sc-cta-more"> este producto</span></button>
+          </div>
           <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
@@ -895,7 +944,11 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$29.500</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$28.500</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Salomé">📲 Cotizar este producto</button></div>
+          <p class="sc-total" aria-live="polite"></p>
+          <div class="sc-actions">
+            <div class="qty" role="group" aria-label="Cantidad a cotizar"><button type="button" class="qty-b" data-q="-1" aria-label="Quitar una unidad">−</button><input class="qty-i" type="number" inputmode="numeric" min="1" max="9999" value="25" aria-label="Cantidad a cotizar"><span class="qty-u">unid.</span><button type="button" class="qty-b" data-q="1" aria-label="Agregar una unidad">+</button></div>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Salomé">📲 Cotizar<span class="sc-cta-more"> este producto</span></button>
+          </div>
           <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
@@ -917,7 +970,11 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
             <div class="sc-tier"><span>+20 unidades</span><strong>$41.000</strong></div>
             <div class="sc-tier best"><em>Mejor precio</em><span>+50 unidades</span><strong>$39.000</strong></div>
           </div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-ship-trigger data-quote-product="Silla Class Premium">📲 Cotizar este producto</button></div>
+          <p class="sc-total" aria-live="polite"></p>
+          <div class="sc-actions">
+            <div class="qty" role="group" aria-label="Cantidad a cotizar"><button type="button" class="qty-b" data-q="-1" aria-label="Quitar una unidad">−</button><input class="qty-i" type="number" inputmode="numeric" min="1" max="9999" value="25" aria-label="Cantidad a cotizar"><span class="qty-u">unid.</span><button type="button" class="qty-b" data-q="1" aria-label="Agregar una unidad">+</button></div>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Silla Class Premium">📲 Cotizar<span class="sc-cta-more"> este producto</span></button>
+          </div>
           <p class="sc-note">🏠 <b>Hogares:</b> precio de 1 unidad, venta minorista solo en Córdoba Capital. <span class="sc-extra">Precios por unidad en pesos, sujetos a variación.</span></p>
         </div>
       </article>
@@ -934,7 +991,10 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <p class="sc-desc">Banquetas de caño con asiento tapizado y apoyapiés, fabricadas a juego con nuestras sillas. Disponibles con asiento redondo o cuadrado.</p>
           <ul class="sc-feats"><li>Fabricadas a juego</li><li>A medida</li><li>Tapizado a elección</li></ul>
           <div class="sc-consult"><strong>Precio según cantidad y medida</strong>Cotizá y te respondemos por WhatsApp. Para hogares, venta solo en Córdoba Capital.</div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Banquetas">📲 Cotizar este producto</button></div>
+          <div class="sc-actions">
+            <div class="qty" role="group" aria-label="Cantidad a cotizar"><button type="button" class="qty-b" data-q="-1" aria-label="Quitar una unidad">−</button><input class="qty-i" type="number" inputmode="numeric" min="1" max="9999" value="25" aria-label="Cantidad a cotizar"><span class="qty-u">unid.</span><button type="button" class="qty-b" data-q="1" aria-label="Agregar una unidad">+</button></div>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Banquetas">📲 Cotizar<span class="sc-cta-more"> este producto</span></button>
+          </div>
         </div>
       </article>
 
@@ -952,7 +1012,10 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <p class="sc-choice">🎨 <b>Color y tapizado de las sillas a elección</b><span class="sc-more"> dentro de la variedad disponible.</span></p>
           <ul class="sc-feats"><li>4, 6 o más sillas</li><li>Mesa 0,80 x 1,40 m</li><li>Mesa 0,80 x 1,80 m</li></ul>
           <div class="sc-consult"><strong>Precio según cantidad y medida</strong>Ideal para tu hogar o tu local. Venta particular solo en Córdoba Capital.</div>
-          <div class="sc-actions"><button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Combo silla + mesa">📲 Cotizar este producto</button></div>
+          <div class="sc-actions">
+            <div class="qty" role="group" aria-label="Cantidad a cotizar"><button type="button" class="qty-b" data-q="-1" aria-label="Quitar una unidad">−</button><input class="qty-i" type="number" inputmode="numeric" min="1" max="9999" value="25" aria-label="Cantidad a cotizar"><span class="qty-u">unid.</span><button type="button" class="qty-b" data-q="1" aria-label="Agregar una unidad">+</button></div>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-quote-product="Combo silla + mesa">📲 Cotizar<span class="sc-cta-more"> este producto</span></button>
+          </div>
         </div>
       </article>
 
@@ -1102,7 +1165,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
 
 <button type="button" class="wa-float" data-quote-trigger aria-label="Cotizar por WhatsApp">💬</button>
 
-<button type="button" class="offer-pill" id="offerPill" aria-label="Ver mi beneficio de 10% de descuento">🎁 10% OFF · <b id="pillTimer">48:00:00</b></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- MODAL DE COTIZACION -->
 <div class="modal-overlay" id="quoteOverlay">
@@ -1113,12 +1176,12 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     <p class="quote-scope">📦 Venta mayorista a todo el país · 🏠 Venta particular (minorista) solo en Córdoba Capital</p>
 
     <div class="promo-box" id="promoBox" hidden>
-      <div class="promo-text"><strong>🎁 Tu beneficio: 10% OFF en tu compra</strong><span>Código <b>TIKA10</b> · vence en <b id="promoLeft">48:00:00</b></span></div>
+      <div class="promo-text"><strong>🎁 10% OFF en Silla Apilable y Silla Salomé</strong><span>Código <b>TIKA10</b> · vence en <b id="promoLeft">24:00:00</b></span><em id="promoNote"></em></div>
       <button type="button" class="chip promo-chip" id="promoChip">Aplicar a mi consulta</button>
     </div>
 
     <div class="promo-box" id="shipBox" hidden>
-      <div class="promo-text"><strong>🚚 Beneficio de envío para tus sillas</strong><span>15% OFF en el envío con la compra de +20 sillas en Córdoba Capital · 30% OFF en el envío al interior</span></div>
+      <div class="promo-text"><strong>🚚 Beneficio extra en tu envío</strong><span>15% OFF en el envío con la compra de +20 sillas en Córdoba Capital · 30% OFF en el envío al interior</span></div>
       <button type="button" class="chip promo-chip" id="shipChip">Aplicar a mi consulta</button>
     </div>
 
@@ -1157,6 +1220,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
         <button type="button" class="chip" data-value="Más de 20 unidades">+ 20 unid.</button>
         <button type="button" class="chip" data-value="Más de 50 unidades">+ 50 unid.</button>
       </div>
+      <p class="quote-ok" id="qtyNote" hidden></p>
     </div>
 
     <div class="quote-group">
@@ -1183,41 +1247,41 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- CARTEL DE DESCUENTO (a los 60 segundos) -->
+<!-- CARTEL DE DESCUENTO (tras ver 2 modelos de silla o el 75% de la pagina) -->
 <div class="modal-overlay" id="offerOverlay">
   <div class="offer-card" role="dialog" aria-modal="true" aria-labelledby="offerTitle">
     <button type="button" class="modal-close" id="offerClose" aria-label="Cerrar">✕</button>
     <span class="offer-kicker"><span class="offer-gift">🎁</span> Beneficio exclusivo para vos</span>
-    <h3 id="offerTitle"><em>10% OFF</em> en tu compra</h3>
-    <p class="offer-sub">Gracias por visitar TIKAFAP. Activá tu código ahora y ahorrá en sillas, mesas, banquetas y combos <strong>directo de fábrica</strong>.</p>
+    <h3 id="offerTitle"><em>10% OFF</em><small>en Silla Apilable y Silla Salomé</small></h3>
+    <p class="offer-sub">Estás mirando nuestras sillas más elegidas. Activá tu código ahora y ahorrá <strong>directo de fábrica</strong>.</p>
     <div class="offer-coupon">
       <span>Tu código</span>
       <strong id="offerCode">TIKA10</strong>
       <button type="button" id="offerCopy">Copiar</button>
     </div>
-    <div class="offer-timer"><span>⏳ Tu beneficio vence en</span> <b id="offerTimer">48:00:00</b></div>
-    <button type="button" class="btn btn-primary offer-cta" id="offerCta">🎟️ Quiero mi 10% de descuento</button>
+    <div class="offer-timer"><span>⏳ Activo durante</span> <b>24 hs</b></div>
+    <button type="button" class="btn btn-primary offer-cta" id="offerCta">🎟️ Activar mi 10% OFF</button>
     <ul class="offer-points">
-      <li>✔ Se suma automáticamente a tu consulta por WhatsApp</li>
-      <li>✔ Mayoristas de todo el país y particulares de Córdoba Capital</li>
-      <li>✔ Fabricación propia · 2 años de garantía</li>
+      <li>✔ Válido para Silla Apilable y Silla Salomé</li>
+      <li>✔ Dura 24 hs desde que lo activás: la cuenta regresiva queda arriba</li>
+      <li>✔ Se aplica solo al cotizar esos modelos</li>
     </ul>
     <button type="button" class="offer-skip" id="offerSkip">Ahora no, gracias</button>
   </div>
 </div>
 
-<!-- BENEFICIO DE ENVIO (al tocar un boton de un modelo de silla) -->
+<!-- BENEFICIO EXTRA EN EL ENVIO (al marcar 2 opciones en el cotizador) -->
 <div class="modal-overlay" id="shipOverlay">
   <div class="offer-card ship-card" role="dialog" aria-modal="true" aria-labelledby="shipTitle">
     <button type="button" class="modal-close" id="shipClose" aria-label="Cerrar">✕</button>
     <span class="offer-kicker"><span class="offer-gift">🚚</span> Beneficio de envío</span>
-    <h3 id="shipTitle"><em>Descuentos en el envío</em> de tus sillas</h3>
-    <p class="offer-sub">Elegiste un modelo de silla: activá tu beneficio de envío y cotizá con la mejor condición.</p>
+    <h3 id="shipTitle"><em>Beneficio extra</em> en tu envío</h3>
+    <p class="offer-sub">Mientras armás tu consulta, sumá un descuento extra en el envío de tus sillas.</p>
     <ul class="offer-perks">
-      <li><i>🚚</i><span><strong>15% OFF en el envío</strong> con la compra de +20 sillas en Córdoba Capital</span></li>
+      <li><i>🚚</i><span><strong>15% OFF en el envío</strong> para compras de +20 sillas en Córdoba Capital</span></li>
       <li><i>📦</i><span><strong>30% OFF en el envío</strong> al interior</span></li>
     </ul>
-    <button type="button" class="btn btn-primary offer-cta" id="shipCta">🚚 Activar beneficio y cotizar</button>
+    <button type="button" class="btn btn-primary offer-cta" id="shipCta">🚚 Activar beneficio extra</button>
     <p class="offer-fine">Se suma automáticamente a tu consulta por WhatsApp.</p>
     <button type="button" class="offer-skip" id="shipSkip">Seguir sin el beneficio</button>
   </div>
@@ -1332,6 +1396,17 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     countEl.textContent = i + 1;
     const pb = pills[i], box = pb.parentElement;
     box.scrollTo({ left: pb.offsetLeft - (box.clientWidth - pb.offsetWidth) / 2, behavior: 'smooth' });
+    markViewed(i);
+  }
+  function sectionInView(){
+    const r = sc.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.5;
+  }
+  const viewedChairs = new Set();
+  function markViewed(i){
+    if (i > 3 || !sectionInView()) return;
+    viewedChairs.add(i);
+    if (viewedChairs.size >= 2) scheduleOffer();
   }
   function goTo(i){
     i = Math.max(0, Math.min(panels.length - 1, i));
@@ -1347,7 +1422,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     const y = -sc.getBoundingClientRect().top;
     let i = Math.round(y / segEl.offsetHeight);
     i = Math.max(0, Math.min(panels.length - 1, i));
-    if (i !== cur) setActive(i);
+    if (i !== cur) setActive(i); else markViewed(cur);
   }
   panels.forEach((p, k) => { p.inert = k !== 0; p.setAttribute('aria-hidden', k === 0 ? 'false' : 'true'); });
   pills.forEach((b, k) => {
@@ -1468,6 +1543,8 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       header.classList.toggle('scrolled', window.scrollY > 40);
       heroUpdate();
       showcaseUpdate();
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll > 0 && window.scrollY / maxScroll >= 0.75) scheduleOffer();
       ticking = false;
     });
   }
@@ -1476,7 +1553,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   onScroll();
 
   /* ---- Descuento: estado compartido (cartel, pastilla y formulario) ---- */
-  const OFFER = { code: 'TIKA10', pct: 10, ms: 48 * 3600 * 1000, delay: 60000, key: 'tk_offer_v1' };
+  const OFFER = { code: 'TIKA10', pct: 10, ms: 24 * 3600 * 1000, key: 'tk_offer_v2', products: ['Silla Apilable', 'Silla Salomé'] };
   let offer = null;
   try { offer = JSON.parse(localStorage.getItem(OFFER.key)); } catch (e) { offer = null; }
   function saveOffer(){ try { localStorage.setItem(OFFER.key, JSON.stringify(offer)); } catch (e) {} }
@@ -1518,31 +1595,46 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     const ok = picked('perfil').length && picked('producto').length && picked('cantidad').length;
     submitBtn.disabled = !ok;
     hint.style.visibility = ok ? 'hidden' : 'visible';
+    syncPromo();
   }
   function lockPage(on){ document.documentElement.classList.toggle('modal-open', on); }
-  const promoBox = $('#promoBox'), promoChip = $('#promoChip'), homeNote = $('#homeNote');
+  const promoBox = $('#promoBox'), promoChip = $('#promoChip'), homeNote = $('#homeNote'), qtyNote = $('#qtyNote');
+  let quoteQty = null;
+  const markedSet = new Set();
+  const promoEligible = () => picked('producto').filter(p => OFFER.products.indexOf(p) >= 0);
   function syncPromo(){
     const on = offerActive();
     promoBox.hidden = !on;
-    if (on){
-      $('#promoLeft').textContent = fmtLeft();
-      promoChip.textContent = promoChip.classList.contains('active') ? '✓ Aplicado' : 'Aplicar a mi consulta';
-    }
+    if (!on) return;
+    $('#promoLeft').textContent = fmtLeft();
+    promoChip.textContent = promoChip.classList.contains('active') ? '✓ Aplicado' : 'Aplicar a mi consulta';
+    const el = promoEligible(), note = $('#promoNote');
+    note.className = el.length ? '' : 'warn';
+    note.textContent = el.length ? '✔ Aplica a: ' + el.join(' y ') : 'Elegí Silla Apilable o Silla Salomé para usar este descuento.';
   }
   promoChip.addEventListener('click', () => { promoChip.classList.toggle('active'); syncPromo(); });
   function syncHomeNote(){
     homeNote.classList.toggle('show', picked('perfil')[0] === 'Hogar o particular (Córdoba Capital)');
   }
+  const qtyRange = n => n >= 50 ? 'Más de 50 unidades' : n >= 20 ? 'Más de 20 unidades' : 'Menos de 20 unidades';
+  function setQty(n){
+    quoteQty = n;
+    $$('.chip-group[data-field="cantidad"] .chip', overlay).forEach(c => c.classList.toggle('active', c.dataset.value === qtyRange(n)));
+    qtyNote.hidden = false;
+    qtyNote.textContent = '✔ Cantidad exacta que elegiste en la ficha: ' + n + ' unidades';
+  }
   function openQuoteModal(prefill){
     prefill = prefill || {};
     $$('.chip', overlay).forEach(c => c.classList.remove('active'));
     comment.value = '';
-    promoChip.classList.toggle('active', offerActive());
-    syncPromo();
+    markedSet.clear(); quoteQty = null; qtyNote.hidden = true;
+    const fromChair = !!prefill.producto && OFFER.products.indexOf(prefill.producto) >= 0;
+    promoChip.classList.toggle('active', offerActive() && fromChair);
     shipChip.classList.toggle('active', ship.on);
     syncShip();
     if (prefill.perfil){ const c = $('.chip-group[data-field="perfil"] .chip[data-value="' + prefill.perfil + '"]', overlay); if (c) c.classList.add('active'); }
     if (prefill.producto){ const c = $('.chip-group[data-field="producto"] .chip[data-value="' + prefill.producto + '"]', overlay); if (c) c.classList.add('active'); }
+    if (prefill.qty) setQty(prefill.qty);
     syncHomeNote();
     updateSubmitState();
     lastFocus = document.activeElement;
@@ -1569,6 +1661,8 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
         }
         chip.classList.toggle('active', turnOn);
       }
+      if (chip.classList.contains('active')) markedSet.add(group.dataset.field + '|' + chip.dataset.value);
+      if (group.dataset.field === 'cantidad'){ quoteQty = null; qtyNote.hidden = true; }
       if (group.dataset.field === 'perfil'){
         syncHomeNote();
         if (chip.dataset.value.indexOf('Hogar') === 0 && !picked('cantidad').length){
@@ -1577,6 +1671,9 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
         }
       }
       updateSubmitState();
+      if (markedSet.size >= 2 && !ship.seen) setTimeout(() => {
+        if (!ship.seen && overlay.classList.contains('open') && !shipOverlay.classList.contains('open')) showShip();
+      }, 450);
     }));
   });
 
@@ -1589,7 +1686,9 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       extra: picked('extra')
     };
     const note = comment.value.trim();
-    const withPromo = offerActive() && promoChip.classList.contains('active');
+    const eligible = promoEligible();
+    const promoOn = offerActive() && promoChip.classList.contains('active');
+    const withPromo = promoOn && eligible.length > 0;
     const withShip = ship.seen && shipChip.classList.contains('active');
     const bullets = list => list.map(v => '• ' + v).join('\n');
     const SI = '✅ *SÍ aplica*', NO = '❌ *NO aplica*';
@@ -1597,13 +1696,15 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       '👋 *Hola TIKAFAP!* Quiero cotizar desde la web:',
       '👤 *PERFIL*\n' + quoteState.perfil,
       '🪑 *PRODUCTOS DE INTERÉS*\n' + bullets(quoteState.producto),
-      '🔢 *CANTIDAD A COTIZAR*\n' + quoteState.cantidad,
+      '🔢 *CANTIDAD A COTIZAR*\n' + (quoteQty ? '*' + quoteQty + ' unidades*\n(rango: ' + quoteState.cantidad + ')' : quoteState.cantidad),
       '🚚 *ENVÍO Y OTROS*\n' + (quoteState.extra.length ? bullets(quoteState.extra) : 'Sin aclaraciones')
     ];
     if (note) sections.push('💬 *COMENTARIOS*\n' + note);
     sections.push([
       '🎁 *BENEFICIOS DE LA WEB*',
-      '🏷️ Descuento ' + OFFER.pct + '% OFF: ' + (withPromo ? SI + '\n    Código: *' + OFFER.code + '* (válido hasta ' + fmtEnd() + ')' : NO),
+      '🏷️ Descuento ' + OFFER.pct + '% OFF: ' + (withPromo
+        ? SI + '\n    Código: *' + OFFER.code + '* (válido hasta ' + fmtEnd() + ')\n    Aplica a: ' + eligible.join(' y ')
+        : NO + (promoOn ? ' (solo para Silla Apilable y Silla Salomé)' : '')),
       '🚚 Descuentos en el envío: ' + (withShip ? SI + '\n' + SHIP_ITEMS.map(v => '    • ' + v).join('\n') : NO)
     ].join('\n'));
     const text = encodeURIComponent(sections.join('\n\n'));
@@ -1617,6 +1718,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
         content_name: quoteState.producto.join(', '),
         content_category: quoteState.perfil
       };
+      if (quoteQty) lead.cantidad_exacta = quoteQty;
       if (withPromo) lead.descuento = OFFER.code;
       if (withShip) lead.beneficio_envio = 'activado';
       const evId = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
@@ -1662,36 +1764,40 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     else if (offerOverlay.classList.contains('open')) closeOffer(false);
   });
 
-  /* ---- Beneficio de envío: se activa al tocar un botón de un modelo de silla ---- */
+  /* ---- Beneficio extra en el envío: aparece sobre el cotizador al marcar 2 opciones ---- */
   const shipOverlay = $('#shipOverlay');
-  let pendingPrefill = null;
-  function showShip(prefill){
-    pendingPrefill = prefill;
-    lastFocus = document.activeElement;
+  function showShip(){
     shipOverlay.classList.add('open');
-    lockPage(true);
     $('#shipCta').focus({ preventScroll: true });
     track('EnvioBeneficioMostrado');
   }
   function closeShip(accepted){
     shipOverlay.classList.remove('open');
-    lockPage(false);
     ship.seen = true; ship.on = !!accepted; saveShip();
-    if (accepted) track('EnvioBeneficioActivado');
-    openQuoteModal(pendingPrefill || {});
+    shipChip.classList.toggle('active', !!accepted);
+    syncShip();
+    if (accepted){ track('EnvioBeneficioActivado'); toast('✔ Beneficio extra en tu envío aplicado a tu consulta'); }
+    lockPage(overlay.classList.contains('open'));
   }
   $('#shipCta').addEventListener('click', () => closeShip(true));
   $('#shipSkip').addEventListener('click', () => closeShip(false));
   $('#shipClose').addEventListener('click', () => closeShip(false));
   shipOverlay.addEventListener('click', e => { if (e.target === shipOverlay) closeShip(false); });
 
-  /* ---- Cartel de descuento: a los 60 segundos ---- */
+  /* ---- Cartel de 10% OFF: tras ver 2 modelos de silla o el 75% de la página ---- */
   const offerOverlay = $('#offerOverlay');
   const pill = $('#offerPill');
+  const toastEl = $('#toast');
+  let toastT;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(() => toastEl.classList.remove('show'), 6000);
+  }
   function anyModalOpen(){ return [overlay, vOverlay, offerOverlay, shipOverlay, imgOverlay].some(o => o.classList.contains('open')); }
   function track(name){ if (typeof fbq === 'function') fbq('trackCustom', name, { code: OFFER.code }); }
   function showOffer(){
-    $('#offerTimer').textContent = fmtLeft();
     lastFocus = document.activeElement;
     offerOverlay.classList.add('open');
     lockPage(true);
@@ -1701,29 +1807,34 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   function closeOffer(){
     offerOverlay.classList.remove('open');
     lockPage(false);
-    updatePill();
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
   function updatePill(){
-    const on = offerActive() && !offerOverlay.classList.contains('open');
+    const on = offerActive();
     pill.classList.toggle('show', on);
     if (on) $('#pillTimer').textContent = fmtLeft();
   }
-  function maybeShowOffer(){
-    if (offer && !offerActive()) return;
+  let offerScheduled = false;
+  function scheduleOffer(){
+    if (offerScheduled || offer) return;
     let seen = false;
     try { seen = sessionStorage.getItem('tk_offer_seen') === '1'; } catch (e) {}
-    if (seen || (offer && offer.claimed)) return;
-    if (anyModalOpen()){ setTimeout(maybeShowOffer, 3000); return; }
-    if (!offer){ offer = { start: Date.now(), claimed: false }; saveOffer(); }
+    if (seen) return;
+    offerScheduled = true;
+    setTimeout(maybeShowOffer, 900);
+  }
+  function maybeShowOffer(){
+    if (offer) return;
+    if (anyModalOpen()){ setTimeout(maybeShowOffer, 2500); return; }
     try { sessionStorage.setItem('tk_offer_seen', '1'); } catch (e) {}
     showOffer();
   }
   $('#offerCta').addEventListener('click', () => {
-    offer.claimed = true; saveOffer();
+    offer = { start: Date.now(), claimed: true }; saveOffer();
     track('DescuentoActivado');
     closeOffer();
-    openQuoteModal({});
+    updatePill();
+    toast('🎁 ¡Listo! Tu 10% OFF está activo por 24 hs. Se aplica al cotizar Silla Apilable o Silla Salomé.');
   });
   $('#offerSkip').addEventListener('click', closeOffer);
   $('#offerClose').addEventListener('click', closeOffer);
@@ -1733,22 +1844,48 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     const done = () => { b.textContent = '¡Copiado!'; setTimeout(() => { b.textContent = 'Copiar'; }, 1800); };
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(OFFER.code).then(done, done); else done();
   });
-  pill.addEventListener('click', () => openQuoteModal({}));
-  setTimeout(maybeShowOffer, OFFER.delay);
+  pill.addEventListener('click', () => goTo(0));
   updatePill();
   setInterval(() => {
     if (!offer) return;
     if (!offerActive()){
       pill.classList.remove('show');
       promoBox.hidden = true;
-      if (offerOverlay.classList.contains('open')) closeOffer();
       return;
     }
     const t = fmtLeft();
     $('#pillTimer').textContent = t;
-    $('#offerTimer').textContent = t;
     $('#promoLeft').textContent = t;
   }, 1000);
+
+  /* ---- Cantidad a cotizar en cada ficha (25 por defecto, con + y -) ---- */
+  const peso = n => '$' + n.toLocaleString('es-AR');
+  function syncQty(panel){
+    const input = $('.qty-i', panel);
+    const n = Math.max(1, Math.min(9999, parseInt(input.value, 10) || 1));
+    const tiers = $$('.sc-tier', panel);
+    if (tiers.length){
+      const idx = n >= 50 ? 2 : n >= 20 ? 1 : 0;
+      tiers.forEach((t, k) => t.classList.toggle('on', k === idx));
+      const unit = parseInt($('strong', tiers[idx]).textContent.replace(/\D/g, ''), 10);
+      const tot = $('.sc-total', panel);
+      if (tot) tot.innerHTML = n + ' unidades × ' + peso(unit) + ' = <b>' + peso(n * unit) + '</b> <span>(sin envío)</span>';
+    }
+  }
+  panels.forEach(panel => {
+    const input = $('.qty-i', panel);
+    $$('.qty-b', panel).forEach(b => b.addEventListener('click', () => {
+      const n = Math.max(1, Math.min(9999, (parseInt(input.value, 10) || 0) + parseInt(b.dataset.q, 10)));
+      input.value = n;
+      syncQty(panel);
+    }));
+    input.addEventListener('input', () => { if (input.value !== '') syncQty(panel); });
+    input.addEventListener('blur', () => {
+      input.value = Math.max(1, Math.min(9999, parseInt(input.value, 10) || 25));
+      syncQty(panel);
+    });
+    syncQty(panel);
+  });
 
   /* ---- Disparadores (delegados: tambien funcionan en los banners clonados) ---- */
   document.addEventListener('click', e => {
@@ -1758,8 +1895,12 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     if (q){
       e.preventDefault();
       const prefill = { producto: q.dataset.quoteProduct || null, perfil: q.dataset.quotePerfil || null };
-      if (q.hasAttribute('data-ship-trigger') && !ship.seen) showShip(prefill);
-      else openQuoteModal(prefill);
+      const panel = q.closest('.sc-panel');
+      if (panel){
+        const n = parseInt($('.qty-i', panel).value, 10);
+        if (n > 0) prefill.qty = n;
+      }
+      openQuoteModal(prefill);
       return;
     }
     const v = e.target.closest('[data-video]');
