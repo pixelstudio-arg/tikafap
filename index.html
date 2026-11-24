@@ -1181,7 +1181,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     </div>
 
     <div class="promo-box" id="shipBox" hidden>
-      <div class="promo-text"><strong>🚚 Beneficio extra en tu envío</strong><span>15% OFF en el envío con la compra de +20 sillas en Córdoba Capital · 30% OFF en el envío al interior</span></div>
+      <div class="promo-text"><strong>🚚 Beneficio extra en tu envío</strong><span>15% OFF en el envío para compras de +20 sillas</span></div>
       <button type="button" class="chip promo-chip" id="shipChip">Aplicar a mi consulta</button>
     </div>
 
@@ -1278,8 +1278,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     <h3 id="shipTitle"><em>Beneficio extra</em> en tu envío</h3>
     <p class="offer-sub">Mientras armás tu consulta, sumá un descuento extra en el envío de tus sillas.</p>
     <ul class="offer-perks">
-      <li><i>🚚</i><span><strong>15% OFF en el envío</strong> para compras de +20 sillas en Córdoba Capital</span></li>
-      <li><i>📦</i><span><strong>30% OFF en el envío</strong> al interior</span></li>
+      <li><i>🚚</i><span><strong>15% OFF en el envío</strong> para compras de +20 sillas</span></li>
     </ul>
     <button type="button" class="btn btn-primary offer-cta" id="shipCta">🚚 Activar beneficio extra</button>
     <p class="offer-fine">Se suma automáticamente a tu consulta por WhatsApp.</p>
@@ -1565,7 +1564,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     const m = Math.floor(s / 60); s -= m * 60;
     return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
   }
-  const SHIP_ITEMS = ['15% OFF en el envío con la compra de +20 sillas en Córdoba Capital', '30% OFF en el envío al interior'];
+  const SHIP_ITEMS = ['15% OFF en el envío para compras de +20 sillas'];
   let ship = { seen: false, on: false };
   try { ship = JSON.parse(sessionStorage.getItem('tk_ship')) || ship; } catch (e) {}
   function saveShip(){ try { sessionStorage.setItem('tk_ship', JSON.stringify(ship)); } catch (e) {} }
@@ -1705,7 +1704,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       '🏷️ Descuento ' + OFFER.pct + '% OFF: ' + (withPromo
         ? SI + '\n    Código: *' + OFFER.code + '* (válido hasta ' + fmtEnd() + ')\n    Aplica a: ' + eligible.join(' y ')
         : NO + (promoOn ? ' (solo para Silla Apilable y Silla Salomé)' : '')),
-      '🚚 Descuentos en el envío: ' + (withShip ? SI + '\n' + SHIP_ITEMS.map(v => '    • ' + v).join('\n') : NO)
+      '🚚 Beneficio extra en el envío: ' + (withShip ? SI + '\n' + SHIP_ITEMS.map(v => '    • ' + v).join('\n') : NO)
     ].join('\n'));
     const text = encodeURIComponent(sections.join('\n\n'));
     if (typeof fbq === 'function') {
