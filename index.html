@@ -113,17 +113,30 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     font-weight:700;font-size:14px;cursor:pointer;transition:background .2s ease;
   }
   .nav-cta:hover{background:var(--blue-dark);}
+  nav a.nav-cta, nav a.nav-cta:hover{color:#fff;opacity:1;}
+  .wa-float.hide{opacity:0;visibility:hidden;pointer-events:none;}
   .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:26px;cursor:pointer;}
 
   /* ---------- 1. Hero con video + texto que aparece al scrollear ---------- */
-  .hero{position:relative;height:250vh;padding:0;background:var(--navy-dark);color:#fff;}
+  .hero{position:relative;height:190vh;padding:0;background:var(--navy-dark);color:#fff;}
+  .hero-offer{
+    position:absolute;z-index:5;left:50%;top:80px;transform:translateX(-50%);
+    display:flex;align-items:center;gap:18px;white-space:nowrap;
+    background:rgba(10,28,61,.84);border:1px solid rgba(127,178,240,.4);border-radius:50px;padding:7px 7px 7px 24px;
+    box-shadow:0 12px 34px rgba(0,0,0,.35);backdrop-filter:blur(6px);
+    transition:opacity .35s ease, transform .35s ease, visibility 0s linear 0s;
+  }
+  .hero .hero-offer p{font-size:17px;font-weight:700;margin:0;max-width:none;opacity:1;}
+  .hero-offer b{color:var(--blue-light);}
+  .hero-offer .btn{padding:11px 22px;font-size:14.5px;}
+  .hero-offer.hide{opacity:0;visibility:hidden;transform:translate(-50%,-12px);transition:opacity .35s ease, transform .35s ease, visibility 0s linear .35s;}
   .hero-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;}
   .hero-blur{
     position:absolute;inset:-60px;z-index:0;background:url('img/portada-poster.jpg') center/cover no-repeat;
     filter:blur(38px) brightness(.5) saturate(1.15);transform:scale(1.08);
   }
   .hero-frame{
-    position:absolute;z-index:2;top:84px;height:calc(100% - 112px);aspect-ratio:9/16;left:50%;
+    position:absolute;z-index:2;top:150px;height:calc(100% - 172px);aspect-ratio:9/16;left:50%;
     transform:translateX(calc(-50% + var(--mv,0) * 24vw));
     border-radius:28px;overflow:hidden;background:#000;
     box-shadow:0 30px 80px rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.14);
@@ -613,7 +626,14 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     nav.open{right:0;}
     nav ul{flex-direction:column;align-items:flex-start;gap:24px;}
     .nav-toggle{display:block;}
-    .hero{height:230vh;}
+    .hero{height:180vh;}
+    .hero-offer{
+      top:72px;left:12px;right:12px;transform:none;flex-direction:column;gap:9px;white-space:normal;text-align:center;
+      border-radius:18px;padding:11px 12px 12px;
+    }
+    .hero-offer.hide{transform:translateY(-12px);}
+    .hero .hero-offer p{font-size:14.5px;}
+    .hero-offer .btn{width:100%;padding:11px 16px;}
     .hero-blur{display:none;}
     .hero-frame{inset:0;top:0;height:100%;width:100%;aspect-ratio:auto;transform:none;border-radius:0;border:none;box-shadow:none;z-index:0;}
     .hero-frame video{object-position:50% 50%;}
@@ -711,6 +731,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     .hero{height:auto;}
     .hero-stage{position:relative;height:100vh;}
     .hero .hr{opacity:1;transform:none;transition:none;}
+    .hero-offer{display:none;}
     .hero-cue i{animation:none;}
     .wa-float{animation:none;}
   }
@@ -732,7 +753,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
         <li><a href="#trabajo">Cómo trabajamos</a></li>
         <li><a href="#ubicacion">Ubicación</a></li>
         <li><a href="#faq">Preguntas</a></li>
-        <li><button type="button" class="nav-cta" data-quote-trigger>Cotizar</button></li>
+        <li><a class="nav-cta" href="#productos">Cotizar</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
@@ -750,6 +771,10 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       </video>
     </div>
     <div class="hero-topfade"></div>
+    <div class="hero-offer" id="heroOffer">
+      <p>🏭 De fábrica · Precio mayorista desde <b>20&nbsp;unidades</b></p>
+      <a class="btn btn-primary" href="#productos">Ver modelos y precios</a>
+    </div>
     <div class="hero-copy">
       <div class="container">
         <div class="hero-content">
@@ -771,86 +796,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- 2. BANNER DE BENEFICIOS -->
-<div class="mq mq-bar" data-speed="55" aria-label="Beneficios de comprar en TIKAFAP">
-  <div class="mq-track">
-    <div class="mq-group">
-      <span class="mq-item"><i>🚚</i>Envíos a todo el país</span>
-      <span class="mq-item"><i>🛡️</i>2 años de garantía</span>
-      <span class="mq-item"><i>📦</i>Envío contra entrega</span>
-      <span class="mq-item"><i>📊</i>Precios por escala</span>
-      <span class="mq-item"><i>🧾</i>Facturación</span>
-      <span class="mq-item"><i>🏭</i>Fabricación propia</span>
-      <span class="mq-item"><i>🏢</i>Atención a mayoristas</span>
-      <span class="mq-item"><i>🏠</i>Equipamos hogares en Córdoba Capital</span>
-    </div>
-  </div>
-</div>
-
-<!-- 3. MAS VENDIDOS (gira en sentido contrario) -->
-<section class="bestsellers" aria-label="Modelos más vendidos">
-  <h2 class="bs-title">Nuestros modelos más vendidos</h2>
-  <div class="mq rev" data-speed="50">
-    <div class="mq-track">
-      <div class="mq-group">
-        <button type="button" class="bs-card" data-goto="0">
-          <div class="bs-card-img"><span class="bs-badge">🔥 Más vendida</span><img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP" loading="lazy"></div>
-          <div class="bs-body"><h3>Silla Apilable</h3><span>Ver modelo y precio →</span></div>
-        </button>
-        <button type="button" class="bs-card" data-goto="2">
-          <div class="bs-card-img"><span class="bs-badge">🔥 Más vendida</span><img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP" loading="lazy"></div>
-          <div class="bs-body"><h3>Silla Salomé</h3><span>Ver modelo y precio →</span></div>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4. PERFILES -->
-<section class="profiles" id="perfiles">
-  <div class="container">
-    <div class="section-head">
-      <h2>Trabajamos con quienes compran en cantidad</h2>
-      <p>Stock permanente con mejor precio por volumen de compra. Y si es para tu casa, también te atendemos.</p>
-    </div>
-    <p class="pf-question">¿Con qué perfil te identificás?</p>
-    <div class="profile-grid">
-      <div class="profile-card">
-        <div class="profile-icon">🔁</div>
-        <h3>Revendedores</h3>
-        <p>Precios de fábrica para reventa, con escala por cantidad.</p>
-        <a class="pf-btn" href="#productos">Ver productos</a>
-      </div>
-      <div class="profile-card">
-        <div class="profile-icon">🎉</div>
-        <h3>Salones y organizadores de eventos</h3>
-        <p>Grandes cantidades para salones y eventos, con stock disponible.</p>
-        <a class="pf-btn" href="#productos">Ver productos</a>
-      </div>
-      <div class="profile-card">
-        <div class="profile-icon">🏛️</div>
-        <h3>Instituciones</h3>
-        <p>Municipios, clubes, iglesias y todo tipo de institución.</p>
-        <a class="pf-btn" href="#productos">Ver productos</a>
-      </div>
-      <div class="profile-card">
-        <div class="profile-icon">🍽️</div>
-        <h3>Bares y restaurantes</h3>
-        <p>Mobiliario resistente pensado para el uso comercial diario.</p>
-        <a class="pf-btn" href="#productos">Ver productos</a>
-      </div>
-      <div class="profile-card">
-        <div class="profile-icon">🏠</div>
-        <h3>Hogares y particulares</h3>
-        <p>Sillas, mesas y combos para equipar tu casa. Venta minorista solo en Córdoba Capital.</p>
-        <a class="pf-btn" href="#productos">Ver productos</a>
-      </div>
-    </div>
-    <p class="pf-note">Atención personalizada para elegir tu mejor opción</p>
-  </div>
-</section>
-
-<!-- 5. PRODUCTOS INTERACTIVOS -->
+<!-- 2. PRODUCTOS (justo debajo del video) -->
 <section class="showcase" id="productos" aria-label="Productos">
   <div class="sc-seg"></div>
   <div class="sc-stage">
@@ -1023,6 +969,85 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- 3. BANNER DE BENEFICIOS -->
+<div class="mq mq-bar" data-speed="55" aria-label="Beneficios de comprar en TIKAFAP">
+  <div class="mq-track">
+    <div class="mq-group">
+      <span class="mq-item"><i>🚚</i>Envíos a todo el país</span>
+      <span class="mq-item"><i>🛡️</i>2 años de garantía</span>
+      <span class="mq-item"><i>📦</i>Envío contra entrega</span>
+      <span class="mq-item"><i>📊</i>Precios por escala</span>
+      <span class="mq-item"><i>🧾</i>Facturación</span>
+      <span class="mq-item"><i>🏭</i>Fabricación propia</span>
+      <span class="mq-item"><i>🏢</i>Atención a mayoristas</span>
+      <span class="mq-item"><i>🏠</i>Equipamos hogares en Córdoba Capital</span>
+    </div>
+  </div>
+</div>
+
+<!-- 4. MAS VENDIDOS (gira en sentido contrario) -->
+<section class="bestsellers" aria-label="Modelos más vendidos">
+  <h2 class="bs-title">Nuestros modelos más vendidos</h2>
+  <div class="mq rev" data-speed="50">
+    <div class="mq-track">
+      <div class="mq-group">
+        <button type="button" class="bs-card" data-goto="0">
+          <div class="bs-card-img"><span class="bs-badge">🔥 Más vendida</span><img src="img/apilable-1.jpeg" alt="Silla Apilable TIKAFAP" loading="lazy"></div>
+          <div class="bs-body"><h3>Silla Apilable</h3><span>Ver modelo y precio →</span></div>
+        </button>
+        <button type="button" class="bs-card" data-goto="2">
+          <div class="bs-card-img"><span class="bs-badge">🔥 Más vendida</span><img src="img/salome-1.jpeg" alt="Silla Salomé TIKAFAP" loading="lazy"></div>
+          <div class="bs-body"><h3>Silla Salomé</h3><span>Ver modelo y precio →</span></div>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PERFILES -->
+<section class="profiles" id="perfiles">
+  <div class="container">
+    <div class="section-head">
+      <h2>Trabajamos con quienes compran en cantidad</h2>
+      <p>Stock permanente con mejor precio por volumen de compra. Y si es para tu casa, también te atendemos.</p>
+    </div>
+    <p class="pf-question">¿Con qué perfil te identificás?</p>
+    <div class="profile-grid">
+      <div class="profile-card">
+        <div class="profile-icon">🔁</div>
+        <h3>Revendedores</h3>
+        <p>Precios de fábrica para reventa, con escala por cantidad.</p>
+        <a class="pf-btn" href="#productos">Ver productos</a>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🎉</div>
+        <h3>Salones y organizadores de eventos</h3>
+        <p>Grandes cantidades para salones y eventos, con stock disponible.</p>
+        <a class="pf-btn" href="#productos">Ver productos</a>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🏛️</div>
+        <h3>Instituciones</h3>
+        <p>Municipios, clubes, iglesias y todo tipo de institución.</p>
+        <a class="pf-btn" href="#productos">Ver productos</a>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🍽️</div>
+        <h3>Bares y restaurantes</h3>
+        <p>Mobiliario resistente pensado para el uso comercial diario.</p>
+        <a class="pf-btn" href="#productos">Ver productos</a>
+      </div>
+      <div class="profile-card">
+        <div class="profile-icon">🏠</div>
+        <h3>Hogares y particulares</h3>
+        <p>Sillas, mesas y combos para equipar tu casa. Venta minorista solo en Córdoba Capital.</p>
+        <a class="pf-btn" href="#productos">Ver productos</a>
+      </div>
+    </div>
+    <p class="pf-note">Atención personalizada para elegir tu mejor opción</p>
+  </div>
+</section>
+
 <!-- 6. COMO TRABAJAMOS + FABRICA (banners de video, sentidos contrarios) -->
 <section class="proof" id="trabajo" style="scroll-margin-top:60px">
   <div class="container">
@@ -1078,10 +1103,10 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
           <div class="ic">📍</div>
           <div><strong>Suipacha 2437, Córdoba Capital</strong><span>Abrir en Google Maps · Cómo llegar</span></div>
         </a>
-        <button type="button" class="loc-card" data-quote-trigger>
+        <a class="loc-card" href="#productos">
           <div class="ic">📲</div>
-          <div><strong>WhatsApp · Facundo</strong><span>+54 9 351 866-8174</span></div>
-        </button>
+          <div><strong>Cotizá por WhatsApp</strong><span>Elegí tu modelo, mirá el precio y consultá</span></div>
+        </a>
         <a class="loc-card" href="https://www.instagram.com/tikafap.calidad/" target="_blank" rel="noopener">
           <div class="ic">📷</div>
           <div><strong>@tikafap.calidad</strong><span>Seguinos en Instagram</span></div>
@@ -1136,7 +1161,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       </details>
       <details class="faq-item">
         <summary>¿Cómo hago mi pedido?</summary>
-        <p>Por WhatsApp: tocá "Cotizar", elegí tu perfil, los modelos y la cantidad, y se arma el mensaje solo. Te respondemos con el presupuesto y los tiempos de entrega.</p>
+        <p>Elegí el modelo en la sección de productos, poné la cantidad y tocá "Cotizar este producto". El mensaje de WhatsApp se arma solo, con el modelo, la cantidad y el precio estimado.</p>
       </details>
     </div>
   </div>
@@ -1146,8 +1171,8 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
 <section class="cta-band">
   <div class="container">
     <h2>¿Listo para equipar tu local, tu institución o tu hogar?</h2>
-    <p>Contanos qué necesitás y te pasamos el precio que te corresponde. Mayorista a todo el país · venta particular en Córdoba Capital.</p>
-    <button type="button" class="btn btn-primary" data-quote-trigger>📲 Hablar por WhatsApp</button>
+    <p>Elegí tu modelo y la cantidad, mirá el precio y cotizá. Mayorista a todo el país · venta particular en Córdoba Capital.</p>
+    <a class="btn btn-primary" href="#productos">🪑 Ver modelos y precios</a>
   </div>
 </section>
 
@@ -1157,13 +1182,13 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     <p>Suipacha 2437, Córdoba Capital · Mayoristas a todo el país</p>
     <div class="socials">
       <a href="https://www.instagram.com/tikafap.calidad" target="_blank" rel="noopener" aria-label="Instagram TIKAFAP">IG</a>
-      <button type="button" data-quote-trigger aria-label="WhatsApp">WA</button>
+      <a href="#productos" aria-label="Ver modelos y precios para cotizar">WA</a>
     </div>
     <p style="margin-top:10px;opacity:.6;">© <span id="year"></span> TIKAFAP. Todos los derechos reservados.</p>
   </div>
 </footer>
 
-<button type="button" class="wa-float" data-quote-trigger aria-label="Cotizar por WhatsApp">💬</button>
+<a class="wa-float" id="waFloat" href="#productos" aria-label="Ver modelos y precios">💬</a>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1352,6 +1377,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   const hero = $('#inicio');
   const heroReveal = $$('[data-at]', hero);
   const heroCue = $('#heroCue');
+  const heroOffer = $('#heroOffer');
   const heroVideo = $('#heroVideo');
   function heroUpdate(){
     if (reduceMotion){
@@ -1362,12 +1388,13 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       return;
     }
     const total = hero.offsetHeight - window.innerHeight;
-    const p = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / total));
+    const p = total > 0 ? Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / total)) : 0;
     hero.style.setProperty('--shade', Math.min(1, p / 0.3).toFixed(3));
     const m = Math.min(1, p / 0.16);
     hero.style.setProperty('--mv', (m * m * (3 - 2 * m)).toFixed(3));
     heroReveal.forEach(el => el.classList.toggle('in', p >= parseFloat(el.dataset.at)));
     heroCue.classList.toggle('hide', p > 0.03);
+    heroOffer.classList.toggle('hide', p > 0.05);
   }
   if ('IntersectionObserver' in window && heroVideo){
     new IntersectionObserver(es => {
@@ -1417,7 +1444,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
   }
   function releaseLock(){ lock = false; onScroll(); }
   function showcaseUpdate(){
-    if (lock) return;
+    if (lock || !segEl.offsetHeight) return;
     const y = -sc.getBoundingClientRect().top;
     let i = Math.round(y / segEl.offsetHeight);
     i = Math.max(0, Math.min(panels.length - 1, i));
@@ -1542,6 +1569,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
       header.classList.toggle('scrolled', window.scrollY > 40);
       heroUpdate();
       showcaseUpdate();
+      $('#waFloat').classList.toggle('hide', sectionInView());
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
       if (maxScroll > 0 && window.scrollY / maxScroll >= 0.75) scheduleOffer();
       ticking = false;
@@ -1595,6 +1623,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     submitBtn.disabled = !ok;
     hint.style.visibility = ok ? 'hidden' : 'visible';
     syncPromo();
+    syncQtyNote();
   }
   function lockPage(on){ document.documentElement.classList.toggle('modal-open', on); }
   const promoBox = $('#promoBox'), promoChip = $('#promoChip'), homeNote = $('#homeNote'), qtyNote = $('#qtyNote');
@@ -1616,17 +1645,44 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     homeNote.classList.toggle('show', picked('perfil')[0] === 'Hogar o particular (Córdoba Capital)');
   }
   const qtyRange = n => n >= 50 ? 'Más de 50 unidades' : n >= 20 ? 'Más de 20 unidades' : 'Menos de 20 unidades';
+  let quoteModel = null;
   function setQty(n){
     quoteQty = n;
     $$('.chip-group[data-field="cantidad"] .chip', overlay).forEach(c => c.classList.toggle('active', c.dataset.value === qtyRange(n)));
-    qtyNote.hidden = false;
-    qtyNote.textContent = '✔ Cantidad exacta que elegiste en la ficha: ' + n + ' unidades';
+  }
+  /* Precios por modelo, leídos de las fichas: [1 unidad, +20, +50] */
+  function unitPrice(model, range){
+    const panel = panels.filter(p => $('h3', p).textContent.trim() === model)[0];
+    const cells = panel ? $$('.sc-tier strong', panel) : [];
+    if (cells.length !== 3) return null;
+    const k = range === 'Más de 50 unidades' ? 2 : range === 'Más de 20 unidades' ? 1 : 0;
+    return parseInt(cells[k].textContent.replace(/\D/g, ''), 10);
+  }
+  /* La cantidad exacta es del modelo elegido en la ficha (o del único marcado) */
+  function estimate(){
+    const models = picked('producto').filter(m => m !== 'No estoy seguro');
+    const range = quoteQty ? qtyRange(quoteQty) : picked('cantidad')[0];
+    return models.map(model => {
+      const unit = range ? unitPrice(model, range) : null;
+      const qty = quoteQty && (models.length === 1 || model === quoteModel) ? quoteQty : null;
+      return { model: model, unit: unit, qty: qty, total: unit && qty ? unit * qty : null };
+    });
+  }
+  const estimateLine = e => '• ' + e.model + ': ' + (!e.unit ? 'a cotizar'
+    : e.total ? e.qty + ' × ' + peso(e.unit) + ' = *' + peso(e.total) + '*'
+    : peso(e.unit) + ' c/u (cantidad a definir)');
+  function syncQtyNote(){
+    const priced = estimate().filter(e => e.unit);
+    qtyNote.hidden = !quoteQty && !priced.length;
+    qtyNote.textContent = priced.length
+      ? '💰 Precio estimado (sin envío): ' + priced.map(e => e.model + ' ' + (e.total ? e.qty + ' unid. = ' + peso(e.total) : peso(e.unit) + ' c/u')).join(' · ')
+      : (quoteQty ? '✔ Cantidad que elegiste: ' + quoteQty + ' unidades' : '');
   }
   function openQuoteModal(prefill){
     prefill = prefill || {};
     $$('.chip', overlay).forEach(c => c.classList.remove('active'));
     comment.value = '';
-    markedSet.clear(); quoteQty = null; qtyNote.hidden = true;
+    markedSet.clear(); quoteQty = null; quoteModel = prefill.producto || null;
     const fromChair = !!prefill.producto && OFFER.products.indexOf(prefill.producto) >= 0;
     promoChip.classList.toggle('active', offerActive() && fromChair);
     shipChip.classList.toggle('active', ship.on);
@@ -1661,7 +1717,7 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
         chip.classList.toggle('active', turnOn);
       }
       if (chip.classList.contains('active')) markedSet.add(group.dataset.field + '|' + chip.dataset.value);
-      if (group.dataset.field === 'cantidad'){ quoteQty = null; qtyNote.hidden = true; }
+      if (group.dataset.field === 'cantidad' && quoteQty && chip.dataset.value !== qtyRange(quoteQty)) quoteQty = null;
       if (group.dataset.field === 'perfil'){
         syncHomeNote();
         if (chip.dataset.value.indexOf('Hogar') === 0 && !picked('cantidad').length){
@@ -1691,11 +1747,16 @@ src="https://www.facebook.com/tr?id=1876903703763166&ev=PageView&noscript=1"
     const withShip = ship.seen && shipChip.classList.contains('active');
     const bullets = list => list.map(v => '• ' + v).join('\n');
     const SI = '✅ *SÍ aplica*', NO = '❌ *NO aplica*';
+    const est = estimate();
+    const total = est.reduce((sum, e) => sum + (e.total || 0), 0);
     const sections = [
       '👋 *Hola TIKAFAP!* Quiero cotizar desde la web:',
+      '🪑 *MODELO*\n' + bullets(quoteState.producto),
+      '🔢 *CANTIDAD*\n' + (quoteQty ? '*' + quoteQty + ' unidades*\n(rango: ' + quoteState.cantidad + ')' : quoteState.cantidad),
+      '💰 *PRECIO ESTIMADO*\n' + (est.length ? est.map(estimateLine).join('\n') : 'A cotizar')
+        + (est.filter(e => e.total).length > 1 ? '\nTotal: *' + peso(total) + '*' : '')
+        + '\n_Sin envío ni descuentos. A confirmar por TIKAFAP._',
       '👤 *PERFIL*\n' + quoteState.perfil,
-      '🪑 *PRODUCTOS DE INTERÉS*\n' + bullets(quoteState.producto),
-      '🔢 *CANTIDAD A COTIZAR*\n' + (quoteQty ? '*' + quoteQty + ' unidades*\n(rango: ' + quoteState.cantidad + ')' : quoteState.cantidad),
       '🚚 *ENVÍO Y OTROS*\n' + (quoteState.extra.length ? bullets(quoteState.extra) : 'Sin aclaraciones')
     ];
     if (note) sections.push('💬 *COMENTARIOS*\n' + note);
